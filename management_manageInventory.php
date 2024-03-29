@@ -1,53 +1,50 @@
-<?php
-// Include the font.php file
-include("font.php");
-include('database.php');
-if(isset($_GET['email'])) {
-    $email = $_GET['email'];
-    if(empty($email)) {
-        //Implement this when LogIn is done;
-        $email = "thenbeckham@gmail.com";
-        
-    }else{
-        
-    }
-}else{
-    $email = "thenbeckham@gmail.com";
 
-    //Implement this when LogIn is done "empty";
-}
-$find_email = "SELECT * FROM users WHERE email = '$email'";
-$result = mysqli_query($conn, $find_email);
-
-if(mysqli_num_rows($result) == 1){
-    $profile_data = array();
-    $row = mysqli_fetch_assoc($result);
-    $profile_data['fname'] = $row['first_name'];
-    $profile_data['lname'] = $row['last_name'];
-    $profile_data['dob'] = $row['dob'];
-    $profile_data['gender'] = $row['gender'];
-    $profile_data['contact_number'] = $row['contact_number'];
-    $profile_data['profile_image'] = $row['profile_image'];
-}
-
-?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodEdge-Add Item</title>
+    <title>FoodEdge-Manage Inventory</title>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/bootstrap.css">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
     <style>
-        /* Custom CSS for margin on the first row */
         .first-row-margin {
-            margin-left: 0.5%; /* Adjust margin as needed */
+            margin-left: 0.5%; 
         }
     </style>
 </head>
 <body id="background">
+    <?php
+    // Include the font.php file
+    include("font.php");
+    include('connection.php');
+    if(isset($_GET['email'])) {
+        $email = $_GET['email'];
+        if(empty($email)) {
+            //Implement this when LogIn is done;
+            $email = "thenbeckham@gmail.com";
+            
+        }else{
+            
+        }
+    }else{
+        $email = "thenbeckham@gmail.com";
+        //Implement this when LogIn is done "empty";
+    }
+    $find_email = "SELECT * FROM users WHERE email = '$email'";
+    $result = mysqli_query($conn, $find_email);
+
+    if(mysqli_num_rows($result) == 1){
+        $profile_data = array();
+        $row = mysqli_fetch_assoc($result);
+        $profile_data['fname'] = $row['first_name'];
+        $profile_data['lname'] = $row['last_name'];
+        $profile_data['dob'] = $row['dob'];
+        $profile_data['gender'] = $row['gender'];
+        $profile_data['contact_number'] = $row['contact_number'];
+        $profile_data['profile_image'] = $row['profile_image'];
+    }
+    ?>
     <div class="container-fluid">
         <div class="row first-row-margin">
             <div class="col-2 mt-3 my-3  text-center nav_management">
@@ -82,16 +79,42 @@ if(mysqli_num_rows($result) == 1){
                 <div class="container-fluid inventory_container">
                     <button class='playfair-display' onclick="location.href='management_addItem.php';">Add new item</button>
                     <div class="table-responsive ">
-                <table class="table table-striped table-dark table-hover mt-3">
-                    <tr>
-                        <th>Item ID</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </table>
+                    <table class="table table-striped table-hover mt-3">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class='align-middle text-center dark-header'>Item ID</th>
+                                <th class='align-middle dark-header'>Name</th>
+                                <th class='align-middle dark-header'>Type</th>
+                                <th class='align-middle dark-header'>Category</th>
+                                <th class='align-middle dark-header'>Inventory</th>
+                                <th class='align-middle dark-header'>Edit</th>
+                                <th class='align-middle dark-header'>Delete</th>
+                            </tr>
+                        </thead>
+                        <?php
+                        $sql = "SELECT * FROM inventory";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_array($result)) {
+                                $itemID = $row['id'];
+                                $itemName = $row['name'];
+                                $itemType = $row['type'];
+                                $itemCategory = $row['category'];
+                                $itemInventory = $row['inventory'];
+                                echo "<tr>";
+                                echo "<td class='text-center align-middle'>", $itemID, "</td>";
+                                echo "<td class='align-middle'>", $itemName, "</td>";
+                                echo "<td class='align-middle'>", $itemType, "</td>";
+                                echo "<td class='align-middle'>", $itemCategory, "</td>";
+                                echo "<td class='align-middle'>", $itemInventory, "</td>";
+                                echo "<td> <a href='management_editItem.php?item_id=" . $itemID . "'><img src='Images/web_resources/edit.png' alt='edit' class='event-logo'></a></td>";
+                                echo "<td> <a href='management_deleteItem.php?item_id=" . $itemID . "'><img src='Images/web_resources/trash.png' alt='edit' class='event-logo'></a></td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
+                    </table>
+
             </div>
                 </div>
                 
