@@ -96,3 +96,10 @@
     margin-left: 10px;
     color: #666; /* Customize text color */
 }
+.add_item_row{
+    display: inline-flex;
+    width: 95%;
+}
+.add-item-container{
+    background-color: #E4DFD0;
+}

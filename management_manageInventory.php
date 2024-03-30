@@ -82,13 +82,13 @@
                     <table class="table table-striped table-hover mt-3">
                         <thead class="thead-dark">
                             <tr>
-                                <th class='align-middle text-center dark-header'>Item ID</th>
-                                <th class='align-middle dark-header'>Name</th>
-                                <th class='align-middle dark-header'>Type</th>
-                                <th class='align-middle dark-header'>Category</th>
-                                <th class='align-middle dark-header'>Inventory</th>
-                                <th class='align-middle dark-header'>Edit</th>
-                                <th class='align-middle dark-header'>Delete</th>
+                                <th class='fira-sans-black align-middle text-center dark-header'>Item ID</th>
+                                <th class='fira-sans-black align-middle dark-header'>Name</th>
+                                <th class='fira-sans-black align-middle dark-header'>Type</th>
+                                <th class='fira-sans-black align-middle dark-header'>Category</th>
+                                <th class='fira-sans-black align-middle dark-header'>Inventory</th>
+                                <th class='fira-sans-black align-middle dark-header'>Edit</th>
+                                <th class='fira-sans-black align-middle dark-header'>Delete</th>
                             </tr>
                         </thead>
                         <?php
@@ -102,11 +102,11 @@
                                 $itemCategory = $row['category'];
                                 $itemInventory = $row['inventory'];
                                 echo "<tr>";
-                                echo "<td class='text-center align-middle'>", $itemID, "</td>";
-                                echo "<td class='align-middle'>", $itemName, "</td>";
-                                echo "<td class='align-middle'>", $itemType, "</td>";
-                                echo "<td class='align-middle'>", $itemCategory, "</td>";
-                                echo "<td class='align-middle'>", $itemInventory, "</td>";
+                                echo "<td class='playfair-display text-center align-middle'>", $itemID, "</td>";
+                                echo "<td class='playfair-display align-middle'>", $itemName, "</td>";
+                                echo "<td class='playfair-display align-middle'>", $itemType, "</td>";
+                                echo "<td class='playfair-display align-middle'>", $itemCategory, "</td>";
+                                echo "<td class='playfair-display align-middle'>", $itemInventory, "</td>";
                                 echo "<td> <a href='management_editItem.php?item_id=" . $itemID . "'><img src='Images/web_resources/edit.png' alt='edit' class='event-logo'></a></td>";
                                 echo "<td> <a href='management_deleteItem.php?item_id=" . $itemID . "'><img src='Images/web_resources/trash.png' alt='edit' class='event-logo'></a></td>";
                                 echo "</tr>";
