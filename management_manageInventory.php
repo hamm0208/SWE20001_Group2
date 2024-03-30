@@ -53,7 +53,7 @@
                 <div class="nav mt-5">
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <a href="management_addItem.php" class='linkToManagementAddItem'>
+                            <a href="management_manageInventory.php" class='linkToManagementAddItem'>
                                 <img src="Images/web_resources/inventory_logo.png" alt="Inventory Logo" class='w-20'>
                                 <p class="playfair-display h4">Inventory</p>
                             </a>

@@ -44,11 +44,11 @@ $row = mysqli_fetch_array($result);
 $count = $row[0];
 if($count == 0){
     $sql = "INSERT INTO inventory (name, description, type, category, inventory, price, item_image_name) VALUES
-        ('Deluxe Cheeseburger', 'A mouthwatering cheeseburger with a juicy beef patty, melted cheese, fresh lettuce, tomato, onion, and pickles, served on a toasted sesame seed bun.', 'Food', 'Western', 100, 9.99, 'deluxe_cheeseburger.jpg'),
-        ('Classic Margherita Pizza', 'Authentic Italian pizza topped with tomato sauce, fresh mozzarella cheese, basil leaves, and a drizzle of olive oil.', 'Food', 'Western', 100, 12.99, 'margherita_pizza.jpg'),
-        ('Grilled Chicken Caesar Salad', 'Crisp romaine lettuce tossed with grilled chicken breast, croutons, Parmesan cheese, and Caesar dressing.', 'Food', 'Western', 100, 8.49, 'caesar_salad.jpg'),
-        ('Spaghetti Bolognese', 'Al dente spaghetti pasta served with a rich and savory Bolognese sauce made from ground beef, tomatoes, onions, carrots, and herbs.', 'Food', 'Western', 100, 11.99, 'spaghetti_bolognese.jpg'),
-        ('Fresh Fruit Smoothie', 'A refreshing blend of fresh fruits such as strawberries, bananas, and mangoes, blended with yogurt and ice.', 'Beverage', 'Western', 100, 5.99, 'fruit_smoothie.jpg')
+        ('Deluxe Cheeseburger', 'A mouthwatering cheeseburger with a juicy beef patty, melted cheese, fresh lettuce, tomato, onion, and pickles, served on a toasted sesame seed bun.', 'Food', 'Western', 100, 15, 'deluxe_cheeseburger.jpg'),
+        ('Classic Margherita Pizza', 'Authentic Italian pizza topped with tomato sauce, fresh mozzarella cheese, basil leaves, and a drizzle of olive oil.', 'Food', 'Western', 100, 20, 'margherita_pizza.jpg'),
+        ('Grilled Chicken Caesar Salad', 'Crisp romaine lettuce tossed with grilled chicken breast, croutons, Parmesan cheese, and Caesar dressing.', 'Food', 'Western', 100, 12, 'caesar_salad.jpg'),
+        ('Spaghetti Bolognese', 'Al dente spaghetti pasta served with a rich and savory Bolognese sauce made from ground beef, tomatoes, onions, carrots, and herbs.', 'Food', 'Western', 100, 12, 'spaghetti_bolognese.jpg'),
+        ('Fresh Fruit Smoothie', 'A refreshing blend of fresh fruits such as strawberries, bananas, and mangoes, blended with yogurt and ice.', 'Beverage', 'Western', 100, 6, 'fruit_smoothie.jpg')
     ";
 
 mysqli_query($conn, $sql);

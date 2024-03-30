@@ -103,3 +103,7 @@
 .add-item-container{
     background-color: #E4DFD0;
 }
+.editItem_img{
+    width: 150px;
+    height: 150px;
+}
