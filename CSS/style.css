@@ -107,3 +107,75 @@
     width: 150px;
     height: 150px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Registration Form */
+
+.registration_container {
+    margin-top: 6%;
+}
+
+.registration-form-container {
+    background-color: #E4DFD0;
+    padding: 20px;
+    border-radius: 15px; /* Consistency in styling */
+}
+
+.registration_row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center; /* Align labels and inputs properly */
+}
+
+.registration_row label {
+    font-weight: 600; /* Bold labels for clarity */
+    margin-right: 10px; /* Space between label and input */
+}
+
+/* Styling for all input fields and the select field */
+input[type="email"], input[type="text"], input[type="password"], input[type="tel"],
+input[type="date"], select {
+    width: 60%; /* Unified width for all inputs */
+    padding: 8px;
+    border: 1px solid #ccc; /* Consistent border style */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Readable text size */
+}
+
+.form-submit-button {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    color: #3B3B3B;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    width: auto; /* Button width based on content */
+    margin-top: 20px; /* Space above the button */
+}
+
+.form-submit-button:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.form-submit-button:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
