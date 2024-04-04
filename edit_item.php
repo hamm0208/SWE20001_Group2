@@ -9,6 +9,20 @@ if(isset($_POST['edit_submit'])){
         $itemStock = $_POST['stock_count'];
         $itemPrice = $_POST['price'];
         $result = false;
+        $error_msg = "";
+        if($itemPrice < 0) {
+            $error_msg .= "Item price cannot be negative.\\n";
+        }
+
+        if($itemStock < 0) {
+            $error_msg .= "Stock count must not be negative.\\n";
+        }
+        if(!empty($error_msg)) {            
+            echo '<script>alert("' . $error_msg . '");</script>';
+            echo '<script>window.location.href = "management_editItem.php?item_id=' . $item_id .'";</script>';
+            exit();
+        }
+
         if(!empty($_FILES["image"]["name"])){
             $problem = false;
             //Extract file_name, file_size and tmp_name
@@ -75,5 +89,7 @@ if(isset($_POST['edit_submit'])){
             exit();
         }
 }else{
-    echo $_POST['itemName'];
+    echo '<script>alert("Invalid ID");</script>';
+    echo '<script>window.location.href = "management_manageInventory.php";</script>';
+    exit();
 }

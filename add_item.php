@@ -8,7 +8,20 @@ include("connection.php");
         $itemStock = $_POST['stock_count'];
         $itemPrice = $_POST['price'];
         $result = false;
+        $error_msg = "";
+        if($itemPrice < 0) {
+            $error_msg .= "Item price cannot be negative.\\n";
+        }
 
+        if($itemStock <= 0) {
+            $error_msg .= "Stock count must be greater than zero.\\n";
+        }
+
+        if(!empty($error_msg)) {            
+            echo '<script>alert("' . $error_msg . '");</script>';
+            echo '<script>window.location.href = "management_addItem.php";</script>';
+            exit();
+        }
         if(!empty($_FILES["image"]["name"])){
             $problem = false;
             //Extract file_name, file_size and tmp_name
@@ -62,4 +75,9 @@ include("connection.php");
             echo '<script>window.location.href = "management_manageInventory.php";</script>';
             exit();
         }   
-}?>
+}else{
+    echo '<script>alert("Invalid ID");</script>';
+    echo '<script>window.location.href = "management_manageInventory.php";</script>';
+    exit();
+}
+?>
