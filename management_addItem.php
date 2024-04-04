@@ -11,7 +11,6 @@
     <?php
         include("font.php");
         include('connection.php');
-
     ?>
     <script>
         function updateFileName(input) {
