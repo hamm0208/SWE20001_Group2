@@ -44,7 +44,7 @@
     </script>
     <div class="container border rounded mt-3 p-2  add-item-container">
     <h2 class="text-center fira-sans-black">Edit Item</h2>
-    <form action='edit_item.php' method="POST" enctype="multipart/form-data">
+    <form action='edit_item.php' method="POST" enctype="multipart/form-data" class="playfair-display">
         <input type="number" value="<?php echo $id_db ?>" name="item_id" hidden>
         <div class="form-row add_item_row ">
             <div class="form-group col-12 ">
