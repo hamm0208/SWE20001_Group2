@@ -478,3 +478,14 @@ nav a:hover {
   }
 
 
+  .registration_container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content; /* Adjust based on your form's width or use a specific px/em value */
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    background-color: beige;
+}
