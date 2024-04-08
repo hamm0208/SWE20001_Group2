@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="FoodEge, catering, food, beverage">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Anjanaa Lyan AP Nagulan, Beckham Then">
+    <meta name="author" content="Anjanaa Lyan AP Nagulan">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="preconnect" href="https://fonts.googleapis.com">
