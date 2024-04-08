@@ -1,12 +1,13 @@
 <?php
 // Include database configuration file
 require_once 'database.php'; // Adjust the path as necessary
-
+include "connection.php";
 // Initialize variables
 $email = $first_name = $last_name = $dob = $gender = $contact_number = $password = "";
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
     // Assign POST values to variables
     $email = $_POST['email'];
     $first_name = $_POST['first_name'];
@@ -15,28 +16,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gender = $_POST['gender'];
     $contact_number = $_POST['contact_number'];
     $password = $_POST['password'];
-
-    // Hash the password
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    // Prepare an insert statement
-    $sql = "INSERT INTO users (email, first_name, last_name, dob, gender, contact_number, profile_image) VALUES (?, ?, ?, ?, ?, ?, NULL)";
     
-    if($stmt = $conn->prepare($sql)){
-        // Bind variables to the prepared statement as parameters
-        $stmt->bind_param("ssssss", $email, $first_name, $last_name, $dob, $gender, $contact_number);
+    $sql = "SELECT * FROM users WHERE email = '$email'";
+    $result = mysqli_query($conn, $sql);
+
+    if(mysqli_num_rows($result) > 0) {
+        echo "<script>alert('Account email already exist.');</script>";
+    }else{
+        // Hash the password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    
+        // Prepare an insert statement
+        $sql = "INSERT INTO users (email, first_name, last_name, dob, gender, contact_number, profile_image) VALUES (?, ?, ?, ?, ?, ?, NULL)";
         
-        // Attempt to execute the prepared statement
-        if($stmt->execute()){
-            echo "<script>alert('Registration successful.');</script>";
-            // Redirect to login page or home page
-            // header("location: login.php"); // Uncomment and adjust as necessary
-        } else{
-            echo "<script>alert('Something went wrong. Please try again later.');</script>";
+        if($stmt = $conn->prepare($sql)){
+            // Bind variables to the prepared statement as parameters
+            $stmt->bind_param("ssssss", $email, $first_name, $last_name, $dob, $gender, $contact_number);
+            
+            // Attempt to execute the prepared statement
+            if($stmt->execute()){
+                echo "<script>alert('Registration successful.');</script>";
+                // Redirect to login page or home page
+                // header("location: login.php"); // Uncomment and adjust as necessary
+            } else{
+                echo "<script>alert('Something went wrong. Please try again later.');</script>";
+            }
+            
+            // Close statement
+            $stmt->close();
         }
-        
-        // Close statement
-        $stmt->close();
     }
     
     // Close connection
@@ -92,16 +100,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="registration_row">
                 <label>Gender:</label>
                 <div>
-                    <input type="radio" id="male" name="gender" value="Male" required>
+                    <input type="radio" id="male" name="gender" value="male" required>
                     <label for="male">Male</label>
                 </div>
                 <div>
-                    <input type="radio" id="female" name="gender" value="Female" required>
+                    <input type="radio" id="female" name="gender" value="female" required>
                     <label for="female">Female</label>
-                </div>
-                <div>
-                    <input type="radio" id="other" name="gender" value="Other" required>
-                    <label for="other">Other</label>
                 </div>
             </div>
             
