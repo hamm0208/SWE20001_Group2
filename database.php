@@ -71,7 +71,7 @@ if(mysqli_num_rows(mysqli_query($conn,$find))!= 1){
         VALUES
             ('thenbeckham@gmail.com', 'Beckham', 'Then', '2003-02-08', 'male', '0128781041', null),
             ('everlynchin09@gmail.com', 'Irene', 'Chin', '2002-01-01', 'female', '0143926960', null),
-            ('anjanaalyann@gmail.com', 'Anjaana', 'Lyan', '2002-01-01', 'female', '0178181712', null),
+            ('anjanaalyann@gmail.com', 'Anjanaa', 'Lyan', '2002-01-01', 'female', '0178181712', null),
             ('crystalgoh01@gmail.com', 'Crystal', 'Goh', '2002-01-01', 'female', '0146178161', null),
             ('isakibul623@gmail.com', 'Sakibul', 'Islam', '2001-01-01', 'male', '01952007652', null),
             ('ThomasShelby@gmail.com', 'Thomas', 'Shelby', '1967-01-01', 'male', '0123456789', null);
