@@ -34,7 +34,7 @@
                         Have fun browsing!
                         <br>
                         <br>
-                        <a href="foodmenu.html" class="start-browsing-button">Start Browsing</a>
+                        <a href="food_beverage.php#foodmenu" class="start-browsing-button">Start Browsing</a>
                     </h5>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                         Have fun browsing!  
                         <br>
                         <br>
-                        <a href="foodmenu.html" class="start-browsing-button">Start Browsing</a>
+                        <a href="food_beverage.php#beveragemenu" class="start-browsing-button">Start Browsing</a>
                     </h5>
                 </div>
             </div>
