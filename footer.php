@@ -2,7 +2,7 @@
 <footer id="footer">
     <div class="ft-container">
         <div class="ft-row">
-            <div class="col-1">
+            <div class="ft-col-1">
                 <a href="index.html">
                     <img class="ft-logo" src="images/web_resources/FoodEdgeLogo_NoBG.png" alt="Footer Logo">
                 </a>
@@ -10,7 +10,7 @@
                     <p>Elevate your events with our premier food and beverage catering services. From exquisite cuisine to expertly crafted mocktails, we bring taste and sophistication to every occasion.</p>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="ft-col-2">
                 <div class="ft-services">
                     <h2>Our Services</h2>
                     <div class="ft-main-links">

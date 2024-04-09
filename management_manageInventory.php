@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodEdge-Manage Inventory</title>
     <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/bootstrap.css">
+    <link rel="stylesheet" href="CSS/bootstrap.css">    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
     <style>
         .first-row-margin {
@@ -96,29 +96,34 @@
                     <div class="col-10 pt-5">
                         <h1 class="pt-5 fira-sans-black">Manage Inventory</h1>
                     </div>
-                    <div class="col-2 mt-4 manange_profile text-center">
-                        <?php
-                            if($profile_data['profile_image'] == NULL || $profile_data['profile_image']  == ""){
-                                echo '<img class="management_profile mt-5 w-33 " src="Images/web_resources/'.$profile_data['gender'].'_default.png" alt="'.$profile_data['fname'].' profile " >';
-                            }else{
-                                echo '<img class="mt-5 w-25" src="profile_images/'.$profile_data['img'].'" alt="'.$profile_data['fname'].' profile" >';
-                            }
-                        ?>
-                    </div>
                 </div>
                 <div class="container-fluid inventory_container">
-                    <button class='playfair-display' onclick="location.href='management_addItem.php';">Add new item</button>
+                    <button class='playfair-display'  onclick="location.href='management_addItem.php';">Add new item</button>
                     <div class="table-responsive ">
-                    <table class="table table-striped table-hover mt-3">
+                    <table class="table table-striped table-hover  mt-3">
                         <thead class="thead-dark">
                             <tr>
-                                <th class='fira-sans-black align-middle text-center dark-header'>Item ID</th>
-                                <th class='fira-sans-black align-middle dark-header'>Name</th>
-                                <th class='fira-sans-black align-middle dark-header'>Type</th>
-                                <th class='fira-sans-black align-middle dark-header'>Category</th>
-                                <th class='fira-sans-black align-middle dark-header'>Inventory</th>
-                                <th class='fira-sans-black align-middle dark-header'>Edit</th>
-                                <th class='fira-sans-black align-middle dark-header'>Delete</th>
+                                <th class='py-3 fira-sans-black align-middle text-center dark-header'>
+                                    Item ID
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Name
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Type
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Category
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Inventory
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Edit
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Delete
+                                </th>
                             </tr>
                         </thead>
                         <?php

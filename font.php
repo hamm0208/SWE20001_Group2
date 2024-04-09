@@ -11,12 +11,10 @@
 /* Fira Sans Black for headings */
 .fira-sans-black {
   font-family: "Fira Sans", sans-serif;
-  font-weight: 900;
 }
 
 /* Playfair Display for normal text */
 .playfair-display {
   font-family: "Playfair Display", serif;
-  font-weight: 400; /* Regular */
 }
 </style>
