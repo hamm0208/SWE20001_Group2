@@ -88,7 +88,7 @@
 
     <section id="team-section">
     <div class="container">
-        <h2>Our Team</h2>
+        <h2 class='text-center my-3'>Our Team</h2>
         <div class="row">
             <div class="col-md-4">
                 <div class="team-member">

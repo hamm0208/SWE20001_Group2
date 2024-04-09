@@ -13,7 +13,7 @@
     <nav>
         <div class="nav-content">
             <div class="FoodEdge-logo">
-                <a href="index.html">
+                <a href="index.php">
                     <img src="images/web_resources/FoodEdgeLogo_NoBG.png" width="150" height="150" alt="FoodEdgeLogo_NoBG" title="FoodEdgeLogo_NoBG">
                 </a>
             </div>
@@ -27,8 +27,7 @@
                         </div>
                     </li>
                     <li><a href="orders.php">ORDERS</a></li>
-                    <li><a href="#">ABOUT US</a></li>
-                    <li><a href="#">CONTACT US</a></li>
+                    <li><a href="aboutus.php">ABOUT US</a></li>
                     <li><a href="profile.php">MY PROFILE</a></li>
                 </ul>
             </div>
