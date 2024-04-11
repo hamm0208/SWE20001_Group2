@@ -1,7 +1,7 @@
 <?php
 // Include database configuration file
 require_once 'database.php'; // Adjust the path as necessary
-include "connection.php";
+
 // Initialize variables
 $email = $first_name = $last_name = $dob = $gender = $contact_number = $password = "";
 
@@ -17,16 +17,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contact_number = $_POST['contact_number'];
     $password = $_POST['password'];
     
+    // Check if the email already exists in the users table
     $sql = "SELECT * FROM users WHERE email = '$email'";
     $result = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($result) > 0) {
-        echo "<script>alert('Account email already exist.');</script>";
-    }else{
+        echo "<script>alert('Account email already exists.');</script>";
+    } else {
         // Hash the password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     
-        // Prepare an insert statement
+        // Prepare an insert statement for the users table
         $sql = "INSERT INTO users (email, first_name, last_name, dob, gender, contact_number, profile_image) VALUES (?, ?, ?, ?, ?, ?, NULL)";
         
         if($stmt = $conn->prepare($sql)){
@@ -35,6 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
+                // Insert into accounts table
+                $account_type = "customer"; // Set account type to customer
+                $sql_accounts = "INSERT INTO accounts (email, password, type) VALUES (?, ?, ?)";
+                if($stmt_accounts = $conn->prepare($sql_accounts)){
+                    $stmt_accounts->bind_param("sss", $email, $hashed_password, $account_type);
+                    $stmt_accounts->execute();
+                    $stmt_accounts->close();
+                }
+                
                 echo "<script>alert('Registration successful.');</script>";
                 // Redirect to login page or home page
                 // header("location: login.php"); // Uncomment and adjust as necessary
@@ -60,7 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Register New Profile</title>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/bootstrap.css">
-  
 </head>
 <body id="background">
 
