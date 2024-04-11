@@ -11,6 +11,7 @@
 /* Fira Sans Black for headings */
 .fira-sans-black {
   font-family: "Fira Sans", sans-serif;
+  font-weight: 200;
 }
 
 /* Playfair Display for normal text */

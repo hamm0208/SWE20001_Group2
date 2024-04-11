@@ -83,7 +83,7 @@
                 <div class="nav mt-5 d-flex justify-content-center">
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <a href="log_out.php" class='linkToManagementAddItem'>
+                            <a href="index.php" class='linkToManagementAddItem'>
                                 <img src="Images/web_resources/sigout_img.png" alt="Log out Logo" class='link_logo'>
                                 <p class="playfair-display h4">Log Out</p>
                             </a>

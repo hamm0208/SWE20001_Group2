@@ -1,7 +1,7 @@
 <?php
 // Include database configuration file
 require_once 'database.php'; // Adjust the path as necessary
-
+include "font.php";
 // Initialize variables
 $email = $first_name = $last_name = $dob = $gender = $contact_number = $password = "";
 
@@ -75,15 +75,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 text-center mt-3">
-            <img src="Images/web_resources/foodEdge_logo.png" alt="FoodEdge Logo" class="img-fluid" style="max-width: 200px;">
+        <div class="col-12 text-center my-3">
+            <a href="index.php">
+                <img src="Images/web_resources/foodEdge_logo.png" alt="FoodEdge Logo" class="img-fluid" style="max-width: 200px;">
+            </a>
         </div>
     </div>
 </div>
 
 <div class="registration_container">
     <form action="registration.php" method="post" id="registrationForm">
-        <h2>Create New Profile</h2>
+        <h2 class='text-center'>Create New Profile</h2>
         
         <div class="registration-form-container">
             <div class="registration_row">
@@ -135,7 +137,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             <div class="registration_row button-group">
                 <button type="submit" class="form-button">Register</button>
-                <button type="reset" class="form-button">Reset</button>
+                <button type="reset" class="form-button bg-danger">Reset</button>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <span class='login.php' style='font-weight: 600;'>Already a user? <a href='#'>Log In Here!</a></span>
+                </div>
             </div>
         </div>
     </form>
