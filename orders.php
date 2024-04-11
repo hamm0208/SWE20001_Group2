@@ -16,20 +16,7 @@
 
     <title>Order History</title>
 </head>
-<style>
-    .order-table-wrapper{
-        background-color: #EAE7DC;
-        border-radius: 12px;
-        margin-bottom: 4%;
-    }
-    .order-h1{
-        color: #8E4324;
-    font-weight: bold;
-    }
-    .status-span{
-        border-radius: 12px;
-    }
-</style>
+
 <body style='background-color:#d8c3a5;'>
 <?php
     include "header.php";
