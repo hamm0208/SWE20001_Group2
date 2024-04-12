@@ -112,7 +112,7 @@
                         foreach ($items as $item) {
                             echo "<tr>";
                             echo "<td>";
-                            echo "<p class='playfair-display order-item-name text-left my-0'>{$item['itemName']}</p>";
+                            echo "<p class='playfair-display order-item-name text-center my-0'>{$item['itemName']}</p>";
                             echo "<img src=\"Images/food_image/{$item['itemImgName']}\" alt=\"{$item['itemName']}\" class='img-fluid cart_item_img'>";
                             echo "</td>";
                             echo "<td class='align-middle h2'>";
