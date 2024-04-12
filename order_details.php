@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Orde Details</title>
+    <title>Order Details</title>
 </head>
     <?php
     include "header.php";
@@ -137,7 +137,7 @@
                 <td><span class="grand-total-amount h3">RM 10</span></td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="text-right align-middle h3"><strong>Item total:</strong></td>
+                    <td colspan="3" class="text-right align-middle h3"><strong>Total:</strong></td>
                     <td><span class="grand-total-amount h2">RM<?php echo $grand_total+10; ; ?></span></td>
                 </tr>
             </table>

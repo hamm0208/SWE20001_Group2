@@ -68,7 +68,9 @@
     <div class="container-fluid">
         <div class="row first-row-margin">
             <div class="col-2 mt-3 my-3  text-center nav_management">
-                <img src="Images/web_resources/foodEdge_logo.png" alt="FoodEdge logo" class="logo img-fluid w-75">
+                <a href='management_manageInventory.php'>
+                    <img src="Images/web_resources/foodEdge_logo.png" alt="FoodEdge logo" class="logo img-fluid w-75">
+                </a>
                 <br>
                 <div class="nav mt-5 d-flex justify-content-center">
                     <ul class="list-inline ">
