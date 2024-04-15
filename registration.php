@@ -1,7 +1,7 @@
 <?php
 // Include database configuration file
 require_once 'database.php'; // Adjust the path as necessary
-
+include ("font.php");
 // Initialize variables
 $email = $first_name = $last_name = $dob = $gender = $contact_number = $password = "";
 
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="registration_container">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="registrationForm">
-        <h2>Create New Profile</h2>
+        <h2 class='fira-sans-black'>Create New Profile</h2>
         
         <div class="registration-form-container">
             <!-- Form fields -->
