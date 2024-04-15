@@ -11,10 +11,20 @@
     <?php
         include("font.php");
         include('connection.php');
-        if(isset($_POST['item_id'])){
-            $item_id = $_GET["item_id"];        
-        }else{
+        if(isset($_GET['item_id'])){
             $item_id = $_GET["item_id"];
+            $sql_check_id = "SELECT COUNT(*) AS count FROM inventory WHERE id = '$item_id'";
+            $result_check_id = mysqli_query($conn, $sql_check_id);
+            $row_check_id = mysqli_fetch_assoc($result_check_id);
+            if($row_check_id['count'] == 0) {
+                echo '<script>alert("Invalid ID");</script>';
+                echo '<script>window.location.href = "management_manageInventory.php";</script>';
+                exit();
+            }
+        }else{
+            echo '<script>alert("Invalid ID");</script>';
+            echo '<script>window.location.href = "management_manageInventory.php";</script>';
+            exit();
         }
         $sql = "SELECT * FROM inventory WHERE id = '$item_id'";
         $result = mysqli_query($conn, $sql);
@@ -34,7 +44,7 @@
     </script>
     <div class="container border rounded mt-3 p-2  add-item-container">
     <h2 class="text-center fira-sans-black">Edit Item</h2>
-    <form action='edit_item.php' method="POST" enctype="multipart/form-data">
+    <form action='edit_item.php' method="POST" enctype="multipart/form-data" class="playfair-display">
         <input type="number" value="<?php echo $id_db ?>" name="item_id" hidden>
         <div class="form-row add_item_row ">
             <div class="form-group col-12 ">

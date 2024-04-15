@@ -1,8 +1,9 @@
+
 #background{
-    background-color: #EAE7DC;
+  background-color:#D8C3A5;
 }
 .nav_management{
-    background-color: #E4DFD0;
+    background-color: #e8d9c3;
     border-radius: 15px;
     height: 95vh;
 }
@@ -10,13 +11,114 @@
     text-decoration: none;
     color: black;
 }
+.cart_container{
+  margin-bottom: 24vh;
+}
+.go_back{
+  text-decoration: none;
+  color: black;
+}
+.fira-sans-black{
+  font-family: "Fira Sans", sans-serif;
+}
+.cart_item_img{
+  width: 200px;
+}
+.cart-table-wrapper{
+  background-color: #EAE7DC;
+  border-radius: 12px;
+}
+.cart_container h1{
+  color: #8E4324;
+  font-weight: bold;
+}
+.playfair-display {
+font-family: "Playfair Display", serif;
+font-weight: 400; /* Regular */
+}
+.cart-item-name{
+  font-size: 15px;
+}
+.place_order_btn {
+position: relative;
+background-color: #8E3E1B;
+border-radius: 5px;
+box-shadow: rgb(121, 18, 55) 0px 4px 0px 0px;
+padding: 15px;
+background-repeat: no-repeat;
+cursor: pointer;
+box-sizing: border-box;
+width: 154px;
+height: 49px;
+color: #fff;
+border: none;
+font-size: 20px;
+transition: all 0.3s ease-in-out;
+z-index: 1;
+overflow: hidden;
+}
+.place_order_btn1 {
+position: relative;
+background-color: #4f4f4f;
+border-radius: 5px;
+box-shadow: #4f4f4f 0px 4px 0px 0px;
+padding: 15px;
+background-repeat: no-repeat;
+cursor: pointer;
+box-sizing: border-box;
+width: 154px;
+height: 49px;
+color: #fff;
+border: none;
+font-size: 20px;
+transition: all 0.3s ease-in-out;
+z-index: 1;
+overflow: hidden;
+}
+
+.place_order_btn::before {
+content: "";
+background-color: rgb(248, 50, 93);
+width: 0;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+transition: width 700ms ease-in-out;
+display: inline-block;
+}
+
+.place_order_btn:hover::before {
+width: 100%;
+}
 .inventory_container{
     margin-top: 6%;
-    
+}
+.cart_icon{
+  margin: auto;
+  padding: 5px;
+}
+.order-table-wrapper{
+  background-color: #EAE7DC;
+  border-radius: 12px;
+  margin-bottom: 4%;
+}
+.order-h1{
+  color: #8E4324;
+font-weight: bold;
+}
+.status-span{
+  border-radius: 12px;
+}
+.cart_icon_container{
+  display: inline-flex;
+  border: 1px solid black;
+  border-radius: 30px;
 }
 .inventory_container button{
     appearance: none;
-    background-color: transparent;
+    background-color: #e8d9c3;
     border: 2px solid #1A1A1A;
     border-radius: 15px;
     box-sizing: border-box;
@@ -178,4 +280,313 @@ input[type="date"], select {
 .form-submit-button:active {
     box-shadow: none;
     transform: translateY(0);
+}
+
+
+
+/* menu page */
+
+body, html{
+    height: 100%;
+    line-height: 20px;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+/* full-height image header*/
+.top{
+    padding: 10px;
+}
+
+/* navigation bar */
+nav .nav-content {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background-color:#fff;
+  padding: 18px;
+}
+nav .nav-content .FoodEdge-logo {
+  flex: 1; /* Allow logo to take up remaining space */
+}
+nav .nav-content .right-align{
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  float: right;
+  display: flex; 
+  align-items: center;
+}
+nav .nav-content .right-align ul {
+  list-style-type: none; 
+  margin: 0;
+  padding: 0;
+}
+nav .nav-content .right-align ul li {
+  display: inline; 
+  margin-right: 10px; 
+}
+nav a {
+  text-decoration: none;
+  color: #8E3E1B;
+  margin-right: 15px;
+}
+nav a:hover {
+  color:  #8e8d8a  ; /* Change color on hover */
+}
+ /* Dropdown*/
+ .dropdownbutton {
+  text-decoration: none;
+  color: #8E3E1B;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  }
+  
+  .dropdownbutton:hover {
+  color: #8e8d8a;
+  }
+  
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  z-index: 1;
+  }
+  
+  .dropdown-content a {
+  color: #8E3E1B;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  }
+  
+  .dropdown-content a:hover {
+  background-color: #fff;
+  }
+  
+  .dropdown:hover .dropdown-content {
+  display: block;
+  }
+
+    /*Content (Menu Page)*/
+
+    .container1 {
+      width: 100%;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      padding: 0px 90px 20px 20px;
+      background-color: #d8c3a5;
+    }
+  
+    .category{
+      font-family: 'Fira Sans', sans-serif;
+      padding-top: 70px;
+      font-size: 50px;
+      font-weight: bold;
+      text-align: center;
+      color: #8E3E1B;
+    }
+  
+    .category .menu{
+      color: #e98074;
+    }
+    
+    .card-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .card {
+        position: relative;
+        width: calc(33% - 20px); 
+        height: 400px;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+        /*      top  right bottom left*/
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        transform-origin: center center;
+    }
+    
+    .card:hover {
+      transform: rotateY(180deg);
+      transform-origin: center center;
+    }
+    
+    .front1, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 28px;
+    }
+    
+    .front1 {
+      background-color: #e85a4f;
+    }
+    
+    .back {
+      background-color: #e98074;
+      transform: rotateY(180deg);
+    }
+    
+    .front1 img {
+      width: 100%;
+      height: 70%;
+      object-fit: cover;
+      border-top-right-radius: 28px;
+      border-top-left-radius: 28px;
+    }
+    
+    .front-wording1{
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      font-weight: bold;
+      font-size: 200%;
+      color: #fff;
+      text-align: center;
+    }
+  
+    .back-wording{
+      position: absolute;
+      font-family: 'Fira Sans', sans-serif;
+      margin: 40px 30px 20px 30px;
+      text-align: center;
+    }
+    
+    .info-title{
+      color: #fff;
+      font-family: 'Fira Sans', sans-serif;
+      font-weight: bolder;
+      font-size: larger;
+      padding-top: 50px;
+    }
+  
+    .info-title .info{
+      color:#fff;
+      font-weight: lighter;
+    }
+    .start-browsing-button {
+      background-color: #8e8d8a;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .start-browsing-button:hover {
+      color: #8E3E1B; 
+    }
+
+   /* Footer */
+   .ft-row{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+  }
+  
+  #footer{
+    background-color:#e98074;
+    padding: 3rem;
+    /* padding-top: 7rem; */
+    padding-bottom: 40px;
+  }
+  
+  .ft-logo{
+    width: 220px;
+    height: 220px;
+  }
+
+  li{
+    list-style: none;
+  }
+  
+  .ft-col-1,
+  .ft-col-2{
+    flex: 1;
+    padding-left: 20%; 
+  }
+  
+  .ft-col-2{
+    padding-left: 10%;
+  }
+  
+  .ft-services h2{
+    padding-bottom: 5px;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #8e3e1b;
+    }
+  
+  .ft-main-links{
+    line-height: 32px;
+    }
+  
+  .ft-main-links li a{
+    font-size: 17px;
+    font-family: 'Fira Sans', sans-serif;
+    padding-right: 8px;
+    color:#8e3e1b;
+    text-decoration: none;
+    }
+  
+  .ft-main-links li a:hover{
+    color:#fff;
+   }
+  
+  .ft-aboutFoodEdge{
+    text-align: justify;
+    font-size: 17px;
+    font-family: 'Fira Sans', sans-serif;
+    color:#8E3E1B;
+  }
+
+  
+  
+  .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+  }
+
+  .form-button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 5px; /* Rounded corners */
+  }
+
+
+  .registration_container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content; /* Adjust based on your form's width or use a specific px/em value */
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    background-color: beige;
 }

@@ -5,17 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodEdge-Manage Inventory</title>
     <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/bootstrap.css">
+    <link rel="stylesheet" href="CSS/bootstrap.css">    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
     <style>
         .first-row-margin {
             margin-left: 0.5%; 
         }
+        .link_logo{
+            width: 75px;
+        }
     </style>
 </head>
 <body id="background">
     <?php
-    // Include the font.php file
+    /*
+    session_start();
+    try{
+    if(isset($_SESSION["email"]) && isset($_SESSION["user"])) {
+            if($_SESSION["user"] == "user"){
+                echo '<script>alert("Unauthorised Access!");</script>';
+                echo '<script>window.location.href = "login.php";</script>';
+                exit();
+            }else{
+                $email = $_SESSION['email'];
+                $user = $_SESSION['user'];
+            }
+        }else{
+            echo '<script>alert("Unauthorised Access!");</script>';
+                echo '<script>window.location.href = "login.php";</script>';
+                exit();
+        }
+    }catch(Exception $e){};
+    */
     include("font.php");
     include('connection.php');
     if(isset($_GET['email'])) {
@@ -23,13 +44,12 @@
         if(empty($email)) {
             //Implement this when LogIn is done;
             $email = "thenbeckham@gmail.com";
-            
         }else{
             
         }
     }else{
         $email = "thenbeckham@gmail.com";
-        //Implement this when LogIn is done "empty";
+        //Implement this when LogIn is done;
     }
     $find_email = "SELECT * FROM users WHERE email = '$email'";
     $result = mysqli_query($conn, $find_email);
@@ -48,14 +68,26 @@
     <div class="container-fluid">
         <div class="row first-row-margin">
             <div class="col-2 mt-3 my-3  text-center nav_management">
-                <img src="Images/web_resources/foodEdge_logo.png" alt="FoodEdge logo" class="logo img-fluid w-75">
+                <a href='management_manageInventory.php'>
+                    <img src="Images/web_resources/foodEdge_logo.png" alt="FoodEdge logo" class="logo img-fluid w-75">
+                </a>
                 <br>
-                <div class="nav mt-5">
-                    <ul class="list-inline">
+                <div class="nav mt-5 d-flex justify-content-center">
+                    <ul class="list-inline ">
                         <li class="list-inline-item">
                             <a href="management_manageInventory.php" class='linkToManagementAddItem'>
-                                <img src="Images/web_resources/inventory_logo.png" alt="Inventory Logo" class='w-20'>
+                                <img src="Images/web_resources/inventory_logo.png" alt="Inventory Logo" class=' link_logo'>
                                 <p class="playfair-display h4">Inventory</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav mt-5 d-flex justify-content-center">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="index.php" class='linkToManagementAddItem'>
+                                <img src="Images/web_resources/sigout_img.png" alt="Log out Logo" class='link_logo'>
+                                <p class="playfair-display h4">Log Out</p>
                             </a>
                         </li>
                     </ul>
@@ -66,29 +98,34 @@
                     <div class="col-10 pt-5">
                         <h1 class="pt-5 fira-sans-black">Manage Inventory</h1>
                     </div>
-                    <div class="col-2 mt-4 manange_profile text-center">
-                        <?php
-                            if($profile_data['profile_image'] == NULL || $profile_data['profile_image']  == ""){
-                                echo '<img class="management_profile mt-5 w-33 " src="Images/web_resources/'.$profile_data['gender'].'_default.png" alt="'.$profile_data['fname'].' profile " >';
-                            }else{
-                                echo '<img class="mt-5 w-25" src="profile_images/'.$profile_data['img'].'" alt="'.$profile_data['fname'].' profile" >';
-                            }
-                        ?>
-                    </div>
                 </div>
                 <div class="container-fluid inventory_container">
-                    <button class='playfair-display' onclick="location.href='management_addItem.php';">Add new item</button>
+                    <button class='playfair-display'  onclick="location.href='management_addItem.php';">Add new item</button>
                     <div class="table-responsive ">
-                    <table class="table table-striped table-hover mt-3">
+                    <table class="table table-striped table-hover  mt-3">
                         <thead class="thead-dark">
                             <tr>
-                                <th class='fira-sans-black align-middle text-center dark-header'>Item ID</th>
-                                <th class='fira-sans-black align-middle dark-header'>Name</th>
-                                <th class='fira-sans-black align-middle dark-header'>Type</th>
-                                <th class='fira-sans-black align-middle dark-header'>Category</th>
-                                <th class='fira-sans-black align-middle dark-header'>Inventory</th>
-                                <th class='fira-sans-black align-middle dark-header'>Edit</th>
-                                <th class='fira-sans-black align-middle dark-header'>Delete</th>
+                                <th class='py-3 fira-sans-black align-middle text-center dark-header'>
+                                    Item ID
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Name
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Type
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Category
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Inventory
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Edit
+                                </th>
+                                <th class='py-3 fira-sans-black align-middle dark-header'>
+                                    Delete
+                                </th>
                             </tr>
                         </thead>
                         <?php

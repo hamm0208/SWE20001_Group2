@@ -93,4 +93,22 @@ if(mysqli_num_rows(mysqli_query($conn,$find))!= 1){
     mysqli_query($conn, $sql);
 }
 
+//Orders
+$sql = "CREATE TABLE IF NOT EXISTS orders (
+    id INT(4) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    user_email VARCHAR(50) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    total INT(4) NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+mysqli_query($conn, $sql);
+
+$sql = "CREATE TABLE IF NOT EXISTS order_items (
+    order_id INT(4),
+    item_id INT(4),
+    quantity INT(11),
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (item_id) REFERENCES inventory(id) ON DELETE CASCADE ON UPDATE CASCADE
+)";
+mysqli_query($conn, $sql);
 ?>
