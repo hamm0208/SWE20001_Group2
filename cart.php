@@ -21,7 +21,6 @@
 <?php
 include 'header.php'; 
 include 'connection.php';
-session_start();
 if(!isset($_SESSION["cart_ids"])){
     $_SESSION["cart_ids"] = [];
 }

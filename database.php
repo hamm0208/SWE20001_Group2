@@ -80,15 +80,22 @@ if(mysqli_num_rows(mysqli_query($conn,$find))!= 1){
 }
 
 $find = "SELECT * FROM accounts where email='thenbeckham@gmail.com'";
+
+$beckham_pw = password_hash("12345", PASSWORD_DEFAULT);
+$anjaana_pw = password_hash("12345", PASSWORD_DEFAULT);
+$crystal_pw = password_hash("12345", PASSWORD_DEFAULT);
+$sakib_pw = password_hash("12345", PASSWORD_DEFAULT);
+$irene_pw = password_hash("12345", PASSWORD_DEFAULT);
+$preset_thomas_pw = password_hash("12345", PASSWORD_DEFAULT);
 if(mysqli_num_rows(mysqli_query($conn,$find))!= 1){
     $sql = "INSERT IGNORE INTO accounts (email, password, type)
         VALUES
-        ('thenbeckham@gmail.com', '12345', 'management'),
-            ('everlynchin09@gmail.com', '12345', 'management'),
-            ('anjanaalyann@gmail.com', '12345', 'management'),
-            ('crystalgoh01@gmail.com', '12345', 'management'),
-            ('isakibul623@gmail.com', '12345', 'management'),
-            ('ThomasShelby@gmail.com', '12345', 'customer');
+        ('thenbeckham@gmail.com', '$beckham_pw', 'management'),
+            ('everlynchin09@gmail.com', '$anjaana_pw', 'management'),
+            ('anjanaalyann@gmail.com', '$crystal_pw', 'management'),
+            ('crystalgoh01@gmail.com', '$sakib_pw', 'management'),
+            ('isakibul623@gmail.com', '$irene_pw', 'management'),
+            ('ThomasShelby@gmail.com', '$preset_thomas_pw', 'customer');
     ";
     mysqli_query($conn, $sql);
 }
