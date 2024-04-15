@@ -24,6 +24,13 @@ include 'connection.php';
 if(!isset($_SESSION["cart_ids"])){
     $_SESSION["cart_ids"] = [];
 }
+if($_SESSION["email"] == ""){
+    echo '<script>alert("Please Login First");</script>';
+    echo '<script>window.location.href = "log_in.php";</script>';
+    exit();
+}else{
+    $email = $_SESSION["email"];
+}
 ?>
 <style>
 

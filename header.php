@@ -33,10 +33,6 @@ if(!isset($_SESSION['cart_ids'])){
                 <ul class="nav-links">
                     <li class="dropdown">
                         <a href="menu.php" class="dropdownbutton">CATERING MENU</a>
-                        <div class="dropdown-content">
-                            <a href="foodmenu.php">FOOD</a>
-                            <a href="beveragemenu.php">BEVERAGE</a>
-                        </div>
                     </li>
                     <li><a href="orders.php">ORDERS</a></li>
                     <li><a href="aboutus.php">ABOUT US</a></li>

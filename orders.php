@@ -21,14 +21,13 @@
 <?php
     include "header.php";
     include "connection.php";
-    $email = "thenbeckham@gmail.com"
-    /*
-    if(isset($_SESSION["email"]) && isset($_SESSION["type"])) {
-        if($_SESSION["type"] != "customer"){
-
-        }
+    if($_SESSION["email"] == ""){
+        echo '<script>alert("Please Login First");</script>';
+        echo '<script>window.location.href = "log_in.php";</script>';
+        exit();
+    }else{
+        $email = $_SESSION["email"];
     }
-    */
     ?>
 
     <div class="container-fluid  w-75  mt-3">
