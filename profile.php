@@ -39,7 +39,6 @@
                     echo "<p><strong>Email:</strong> " . $row["email"] . "</p>";
                     echo "<p><strong>Name:</strong> " . $row["first_name"] . " " . $row["last_name"] . "</p>";
                     echo "<p><strong>Date of Birth:</strong> " . $row["dob"] . "</p>";
-                    echo "<p><strong>Gender:</strong> " . $row["gender"] . "</p>";
                     echo "<p><strong>Contact Number:</strong> " . $row["contact_number"] . "</p>";
                 }
             } else {
