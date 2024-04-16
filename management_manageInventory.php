@@ -18,27 +18,25 @@
 </head>
 <body id="background">
     <?php
-    /*
+    include("font.php");
+    include('connection.php');
     session_start();
     try{
-    if(isset($_SESSION["email"]) && isset($_SESSION["user"])) {
-            if($_SESSION["user"] == "user"){
-                echo '<script>alert("Unauthorised Access!");</script>';
-                echo '<script>window.location.href = "login.php";</script>';
-                exit();
-            }else{
+    if(isset($_SESSION["email"]) && isset($_SESSION["type"])) {
+            if($_SESSION["type"] == "management"){
                 $email = $_SESSION['email'];
-                $user = $_SESSION['user'];
+                $user = $_SESSION['type'];
+            }else{
+                echo '<script>alert("Unauthorised Access!");</script>';
+                echo '<script>window.location.href = "log_in.php";</script>';
+                exit();
             }
         }else{
             echo '<script>alert("Unauthorised Access!");</script>';
-                echo '<script>window.location.href = "login.php";</script>';
+                echo '<script>window.location.href = "log_in.php";</script>';
                 exit();
         }
     }catch(Exception $e){};
-    */
-    include("font.php");
-    include('connection.php');
     if(isset($_GET['email'])) {
         $email = $_GET['email'];
         if(empty($email)) {
@@ -85,7 +83,7 @@
                 <div class="nav mt-5 d-flex justify-content-center">
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <a href="index.php" class='linkToManagementAddItem'>
+                            <a href="log_out.php" class='linkToManagementAddItem'>
                                 <img src="Images/web_resources/sigout_img.png" alt="Log out Logo" class='link_logo'>
                                 <p class="playfair-display h4">Log Out</p>
                             </a>

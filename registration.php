@@ -81,9 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </a>
         </div>
     </div>
-</div>
-
-<div class="registration_container">
+    <div class="registration_container">
     <form action="registration.php" method="post" id="registrationForm">
         <h2 class='text-center'>Create New Profile</h2>
         
@@ -137,16 +135,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             <div class="registration_row button-group">
                 <button type="submit" class="form-button">Register</button>
-                <button type="reset" class="form-button bg-danger">Reset</button>
+                <a href="index.php" class="form-button bg-danger">Cancel</a>
+
             </div>
             <div class="row">
                 <div class="col text-center">
-                    <span class='login.php' style='font-weight: 600;'>Already a user? <a href='#'>Log In Here!</a></span>
+                    <span class='login.php' style='font-weight: 600;'>Already a user? <a href='log_in.php'>Log In Here!</a></span>
                 </div>
             </div>
         </div>
     </form>
 </div>
+</div>
+
+
 
 <script>
     document.getElementById('registrationForm').onsubmit = function(e) {

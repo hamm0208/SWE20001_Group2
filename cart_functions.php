@@ -28,7 +28,7 @@ if(isset($_POST["id"])){
         }
     }
     echo "<script>alert('" . $_SESSION["cart_ids"][$id]["itemName"] . " has been added to your cart!');</script>";
-    echo '<script>window.location.href = "menu.php";</script>';
+    echo '<script>window.location.href = "food_beverage.php";</script>';
     $id = "";
     exit();
 }
