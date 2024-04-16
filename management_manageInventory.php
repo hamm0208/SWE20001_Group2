@@ -37,18 +37,6 @@
                 exit();
         }
     }catch(Exception $e){};
-    if(isset($_GET['email'])) {
-        $email = $_GET['email'];
-        if(empty($email)) {
-            //Implement this when LogIn is done;
-            $email = "thenbeckham@gmail.com";
-        }else{
-            
-        }
-    }else{
-        $email = "thenbeckham@gmail.com";
-        //Implement this when LogIn is done;
-    }
     $find_email = "SELECT * FROM users WHERE email = '$email'";
     $result = mysqli_query($conn, $find_email);
 

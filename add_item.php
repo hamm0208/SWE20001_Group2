@@ -1,5 +1,23 @@
 <?php
 include("connection.php");
+session_start();
+try{
+if(isset($_SESSION["email"]) && isset($_SESSION["type"])) {
+        if($_SESSION["type"] == "management"){
+            $email = $_SESSION['email'];
+            $user = $_SESSION['type'];
+        }else{
+            echo '<script>alert("Unauthorised Access!");</script>';
+            echo '<script>window.location.href = "log_in.php";</script>';
+            exit();
+        }
+    }else{
+        echo '<script>alert("Unauthorised Access!");</script>';
+            echo '<script>window.location.href = "log_in.php";</script>';
+            exit();
+    }
+}catch(Exception $e){};
+
  if(isset($_POST['add_submit'])){
         $itemName = $_POST['itemName'];
         $itemDescription = $_POST['description'];
