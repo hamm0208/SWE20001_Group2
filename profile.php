@@ -16,13 +16,11 @@
         <div class="profile-info">
             <?php
             
-            session_start(); 
-            
-            if(isset($_SESSION['user_email'])) {
+            if(isset($_SESSION['email'])) {
                 include 'database.php'; 
 
                 // Retrieve user email from session
-                $user_email = $_SESSION['user_email'];
+                $user_email = $_SESSION['email'];
 
                 // Fetch user information from the database
                 $sql = "SELECT * FROM users WHERE email = '$user_email'"; 
@@ -32,10 +30,13 @@
                 // Check if user exists
                 if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_assoc($result)) {
+                        $gender = $row['gender'];
+                        $profile_image = $row['profile_image'];
                         echo "<p><strong>Email:</strong> " . $row["email"] . "</p>";
                         echo "<p><strong>Name:</strong> " . $row["first_name"] . " " . $row["last_name"] . "</p>";
                         echo "<p><strong>Date of Birth:</strong> " . $row["dob"] . "</p>";
-                        echo "<p><strong>Gender:</strong> " . $row["gender"] . "</p>";
+                        $gender_display = ($row["gender"] === "male") ? "Male" : "Female";
+                        echo "<p><strong>Gender:</strong> $gender_display</p>";
                         echo "<p><strong>Contact Number:</strong> " . $row["contact_number"] . "</p>";
                     }
                 } else {
@@ -53,21 +54,18 @@
             <?php
             // Check if the user has a custom profile image
             $profile_image_path = "images/profile_image/";
-
-            if (!empty($row["profile_image"]) && file_exists($profile_image_path . $row["profile_image"])) {
-                
-                $profile_image = $profile_image_path . $row["profile_image"];
+            if (!empty($profile_image) && file_exists($profile_image_path . $profile_image)){
+                $profile_image_pic = "images/profile_image/".$profile_image;
             } else {
-                
-                if ($row["gender"] == "male") {
-                $profile_image = "images/profile_image/male_default.png";
+                if ($gender == "male") {
+                $profile_image_pic = "images/profile_image/male_default.png";
                 } else {
-                $profile_image = "images/profile_image/female_default.png";
+                $profile_image_pic = "images/profile_image/female_default.png";
                 }
             }
 
             // Display profile image
-            echo "<img src='$profile_image' alt='Profile Image'>";
+            echo "<img src='$profile_image_pic' alt='Profile Image'>";
             ?>
         </div>
     </div>

@@ -655,14 +655,15 @@ li {
 
 /* Profile image */
 .profile-image {
-    width: 35%;
+    width: 50%;
+    text-align: center;
 }
 
 .profile-image img {
-    max-width: 100%;
-    border-radius: 10px;
+    max-width: 300px;
     padding-left: 50px;
-    padding-top: 30px;
+    border-radius: 10px 10px 10px ;
+
 }
 .edit-profile-button {
     background-color: #8e8d8a;
