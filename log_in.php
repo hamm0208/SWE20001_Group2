@@ -52,8 +52,7 @@
         }else{
             $_POST['log_in_submit'] = '';
             echo "<script>alert('Login Failed. Invalid username or password. Please try again');</script>";
-        }
-        
+        } 
     }
 ?>
 
@@ -140,7 +139,7 @@
     </div>
     <div class="registration_container">
         <div class="registration-form-container">
-            <form id="loginForm" action="log_in.php" method="post">
+            <form id="loginForm" action="log_in.php" method="POST">
                 <input type="email" name="email" id="email" placeholder="Email">
                 <input type="password" name="password" id="password" placeholder="Password">
                 <button type="submit" name="log_in_submit" id="loginButton">Log In</button>
@@ -177,8 +176,7 @@
             spinner.setAttribute('role', 'status');
             spinner.setAttribute('aria-hidden', 'true');
             loginButton.appendChild(spinner);
-            loginButton.setAttribute('disabled', 'true'); 
-        });
+            });
     });
 </script>
 
