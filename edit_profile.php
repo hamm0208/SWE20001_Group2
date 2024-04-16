@@ -38,6 +38,7 @@ if (mysqli_num_rows($result) > 0) {
     .disabled-input:disabled {
     background-color: #f0f0f0;
 }
+
 </style>
 <div class="container">
 <h1>EDIT PROFILE</h1>
@@ -63,7 +64,7 @@ if (mysqli_num_rows($result) > 0) {
                 <label for="profile_image">Profile Image:</label>
                 <input type="file" id="profile_image" name="profile_image">
 
-                <input type="submit" value="Save Changes">
+                <input type="submit" value="Save Changes" class="edit-submit-button">
             </form>
         </div>
     </div>

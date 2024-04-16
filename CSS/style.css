@@ -651,6 +651,8 @@ li {
     width: 60%;
     font-family: 'Fira Sans', sans-serif;
     padding-left: 55px;
+    margin: auto;
+    
 }
 
 /* Profile image */
