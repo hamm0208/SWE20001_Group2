@@ -16,49 +16,54 @@
         <div class="profile-info">
             <?php
             
-            include 'database.php';
-            include 'connection.php';
-
-            // Retrieve the username 
-            $customer_username = "Anjanaa Lyan"; 
-
-            // Display the username
-            echo "<p><strong>Username:</strong> $customer_username</p>";
-
+            session_start(); 
             
-            $user_email = "anjanaalyann@gmail.com"; 
-            $sql = "SELECT * FROM users WHERE email = '$user_email'"; 
+            if(isset($_SESSION['user_email'])) {
+                include 'database.php'; 
 
-            
-            $result = mysqli_query($conn, $sql);
+                // Retrieve user email from session
+                $user_email = $_SESSION['user_email'];
 
-            // Check if user exists
-            if (mysqli_num_rows($result) > 0) {
-                
-                while($row = mysqli_fetch_assoc($result)) {
-                    echo "<p><strong>Email:</strong> " . $row["email"] . "</p>";
-                    echo "<p><strong>Name:</strong> " . $row["first_name"] . " " . $row["last_name"] . "</p>";
-                    echo "<p><strong>Date of Birth:</strong> " . $row["dob"] . "</p>";
-                    echo "<p><strong>Gender:</strong> " . $row["gender"] . "</p>";
-                    echo "<p><strong>Contact Number:</strong> " . $row["contact_number"] . "</p>";
+                // Fetch user information from the database
+                $sql = "SELECT * FROM users WHERE email = '$user_email'"; 
+
+                $result = mysqli_query($conn, $sql);
+
+                // Check if user exists
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo "<p><strong>Email:</strong> " . $row["email"] . "</p>";
+                        echo "<p><strong>Name:</strong> " . $row["first_name"] . " " . $row["last_name"] . "</p>";
+                        echo "<p><strong>Date of Birth:</strong> " . $row["dob"] . "</p>";
+                        echo "<p><strong>Gender:</strong> " . $row["gender"] . "</p>";
+                        echo "<p><strong>Contact Number:</strong> " . $row["contact_number"] . "</p>";
+                    }
+                } else {
+                    echo "<p>User not found.</p>";
                 }
             } else {
-                echo "<p>User not found.</p>";
+                echo "<p>User not logged in.</p>";
             }
 
-            
-            mysqli_close($conn);
             ?>
             <button class="edit-profile-button" onclick="location.href='edit_profile.php'">Edit Profile</button>
         </div>
         
         <div class="profile-image">
             <?php
-            // Fetching image based on gender
-            if ($row["gender"] == "male") {
-                $profile_image = "images/web_resources/male_default.png";
+            // Check if the user has a custom profile image
+            $profile_image_path = "images/profile_image/";
+
+            if (!empty($row["profile_image"]) && file_exists($profile_image_path . $row["profile_image"])) {
+                
+                $profile_image = $profile_image_path . $row["profile_image"];
             } else {
-                $profile_image = "images/web_resources/female_default.png";
+                
+                if ($row["gender"] == "male") {
+                $profile_image = "images/profile_image/male_default.png";
+                } else {
+                $profile_image = "images/profile_image/female_default.png";
+                }
             }
 
             // Display profile image
