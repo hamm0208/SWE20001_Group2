@@ -2,6 +2,14 @@
 session_start();
 include "connection.php";
 
+if($_SESSION["email"] == ""){
+    echo '<script>alert("Please Login First");</script>';
+    echo '<script>window.location.href = "log_in.php";</script>';
+    exit();
+}else{
+    $email = $_SESSION["email"];
+}
+
 if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
     $grand_total = 10;
     foreach($_SESSION["cart_ids"] as $item){

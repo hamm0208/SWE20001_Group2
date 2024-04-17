@@ -15,6 +15,13 @@
     <div class="profile-container">
         <div class="profile-info">
             <?php
+            if($_SESSION["email"] == ""){
+                echo '<script>alert("Please Login First");</script>';
+                echo '<script>window.location.href = "log_in.php";</script>';
+                exit();
+            }else{
+                $email = $_SESSION["email"];
+            }
             
             if(isset($_SESSION['email'])) {
                 include 'database.php'; 
