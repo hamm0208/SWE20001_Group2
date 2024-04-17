@@ -46,8 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 
                 echo "<script>alert('Registration successful.');</script>";
-                // Redirect to login page or home page
-                // header("location: login.php"); // Uncomment and adjust as necessary
+                echo '<script>window.location.href = "log_in.php";</script>';
+                exit();
             } else{
                 echo "<script>alert('Something went wrong. Please try again later.');</script>";
             }
