@@ -47,7 +47,10 @@
             }
 
             ?>
-            <button class="edit-profile-button" onclick="location.href='edit_profile.php'">Edit Profile</button>
+            <div class="buttons-container">
+                <button class="edit-profile-button" onclick="location.href='edit_profile.php'">Edit Profile</button>
+                <button class="logout-button" onclick="location.href='log_out.php'">Logout</button>
+            </div>
         </div>
         
         <div class="profile-image">
@@ -58,9 +61,9 @@
                 $profile_image_pic = "images/profile_image/".$profile_image;
             } else {
                 if ($gender == "male") {
-                $profile_image_pic = "images/profile_image/male_default.png";
+                    $profile_image_pic = "images/profile_image/male_default.png";
                 } else {
-                $profile_image_pic = "images/profile_image/female_default.png";
+                    $profile_image_pic = "images/profile_image/female_default.png";
                 }
             }
 
