@@ -121,7 +121,7 @@ if($_SESSION["email"] == ""){
             <tr>
                 <td colspan="3" class="text-right align-middle h2"></td>
                 <td class="text-right">
-                <button id="place_order_btn" class="place_order_btn mt-3" <?php echo ($grand_total == 10) ? 'disabled' : ''; ?>>Place Order</button>
+                <button type='submit' id="place_order_btn" class="place_order_btn mt-3" <?php echo ($grand_total == 10) ? 'disabled' : ''; ?>>Place Order</button>
                 </td>
                 
             </tr>

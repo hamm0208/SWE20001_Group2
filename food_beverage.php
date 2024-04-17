@@ -35,6 +35,7 @@ if($_SESSION["email"] == ""){
     echo '<script>window.location.href = "log_in.php";</script>';
     exit();
 }
+
 ?>
 
 <section class="container1">

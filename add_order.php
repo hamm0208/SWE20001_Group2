@@ -20,7 +20,7 @@ if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
     //Inserting orders
     $sql = "INSERT INTO orders
             SET
-            user_email = 'thenbeckham@gmail.com',
+            user_email = '$email',
             status = 'In Progress',
             total = $grand_total";
     $result = mysqli_query($conn, $sql);
@@ -53,7 +53,6 @@ if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
         $sql = "INSERT INTO order_items (order_id, item_id, quantity) VALUES ('$total_rows', '$id', '$quantity')";
         $result = mysqli_query($conn, $sql);
     }
-
     $_SESSION["cart_ids"] = [];
     echo "<script>alert('Your Order ID is: " . $total_rows . ". Order placed succesfully! You can view your order in the order tab.');</script>";
     echo '<script>window.location.href = "menu.php";</script>';

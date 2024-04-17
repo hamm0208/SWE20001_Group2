@@ -7,7 +7,7 @@ if(!isset($_SESSION['type'])){
     $_SESSION["type"] = "";
 }
 if(!isset($_SESSION['cart_ids'])){
-    $_SESSION["cart_ids"] = "";
+    $_SESSION["cart_ids"] = [];
 }
 ?>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

@@ -19,7 +19,7 @@ if(isset($_POST["id"])){
     $id = $_POST["id"];
     if(array_key_exists($id, $_SESSION["cart_ids"])){
         $_SESSION["cart_ids"][$id]["itemQty"] += 1;
-    } else{
+    }else{
         $sql = "SELECT * FROM inventory where id = $id";
         $result = mysqli_query($conn, $sql);
         
