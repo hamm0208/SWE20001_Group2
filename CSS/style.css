@@ -667,6 +667,7 @@ li {
     border-radius: 10px 10px 10px ;
 
 }
+/* Styling for edit profile button */
 .edit-profile-button {
     background-color: #8e8d8a;
     font-family: 'Fira Sans', sans-serif;
@@ -680,6 +681,27 @@ li {
 
 .edit-profile-button:hover {
     background-color: #8E3E1B;
+}
+
+/* Styling for logout button */
+.logout-button {
+    background-color: #8e8d8a;
+    font-family: 'Fira Sans', sans-serif;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-right: 10px; /* Added margin to match the edit profile button */
+}
+
+.logout-button:hover {
+    background-color: #8E3E1B;
+}
+
+.buttons-container {
+    margin-top: 20px;
 }
   
   
