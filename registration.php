@@ -154,12 +154,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     document.getElementById('registrationForm').onsubmit = function(e) {
         var password = document.getElementById('password').value;
         var confirmPassword = document.getElementById('confirm_password').value;
+
+        var f_name = document.getElementById('first_name').value;
+        var l_name = document.getElementById('last_name').value;
+        
+        var contact_no = document.getElementById('contact_number').value;
+
+        // Regular expression to match only digits
+        var numericRegex = /^\d+$/;
+
+        // Check if contact_no contains only digits and is between 8 and 15 characters
+        if (!numericRegex.test(contact_no) || contact_no.length < 8 || contact_no.length > 15) {
+            e.preventDefault(); // Prevent form submission
+            alert('Contact number must contain only digits and be between 8 and 15 characters.');
+            return;
+        }
+
+        // Regular expression to match only alphabetic characters
+        var alphabeticRegex = /^[A-Za-z]+$/;
+
+        // Check if first name and last name contain only alphabetic characters
+        if (!alphabeticRegex.test(f_name) || !alphabeticRegex.test(l_name)) {
+            e.preventDefault(); // Prevent form submission
+            alert('First name and last name must contain only alphabetic characters.');
+            return;
+        }
+
         if (password !== confirmPassword) {
             e.preventDefault(); // Prevent form submission
             alert('Passwords do not match.');
         }
     };
-    
+
     // Set max DOB to today's date
     var today = new Date().toISOString().split('T')[0];
     document.getElementById("dob").setAttribute('max', today);

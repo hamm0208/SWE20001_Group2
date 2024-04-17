@@ -39,10 +39,6 @@ if(isset($_POST["id"])){
     echo '<script>window.location.href = "food_beverage.php";</script>';
     $id = "";
     exit();
-}else{
-    echo "<script>alert('Unauthorised Access');</script>";
-    echo '<script>window.location.href = "index.php";</script>';
-    exit();
 }
 
 if(isset($_POST["id_add"])){
@@ -52,10 +48,6 @@ if(isset($_POST["id_add"])){
     }
     echo '<script>window.location.href = "cart.php";</script>';
     $id = "";
-    exit();
-}else{
-    echo "<script>alert('Unauthorised Access');</script>";
-    echo '<script>window.location.href = "index.php";</script>';
     exit();
 }
 
@@ -69,10 +61,6 @@ if(isset($_POST["id_remove"])){
     }
     echo '<script>window.location.href = "cart.php";</script>';
     $id = "";
-    exit();
-}else{
-    echo "<script>alert('Unauthorised Access');</script>";
-    echo '<script>window.location.href = "index.php";</script>';
     exit();
 }
 
