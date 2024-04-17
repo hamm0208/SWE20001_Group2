@@ -40,7 +40,7 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 </style>
-<div class="container">
+<div class="profile-wrapper">
 <h1>EDIT PROFILE</h1>
     <div class="profile-form-container">
         <div class="profile-info">

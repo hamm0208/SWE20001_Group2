@@ -628,12 +628,10 @@ li {
 }
 
 /* Profile container */
-.container{
+.profile-wrapper{
     background-color: #D8C3A5;
-    width: 100%;
-    min-height: 100vh;
 }
-.container h1{
+.profile-wrapper h1{
     text-align: center;
     margin-bottom: 20px;
     color: #8E3E1B;
@@ -646,6 +644,7 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    margin: auto;
     margin-bottom: 10px;
 }
 

@@ -10,7 +10,7 @@
 
 <?php include 'header.php'; ?>
 
-<div class="container">
+<div class="profile-wrapper">
     <h1>CUSTOMER PROFILE</h1>
     <div class="profile-container">
         <div class="profile-info">
