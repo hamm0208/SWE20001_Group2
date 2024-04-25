@@ -1,18 +1,14 @@
 <?php
 include "connection.php";
 session_start();
-
+if($_SESSION["email"] == ""){
+    echo '<script>alert("Please login first to start ordering");</script>';
+    echo '<script>window.location.href = "log_in.php";</script>';
+    exit();
+}
 // Initialize $_SESSION["cart_ids"] as an empty array if it's not set
 if (!isset($_SESSION["cart_ids"])) {
     $_SESSION["cart_ids"] = [];
-}
-
-if($_SESSION["email"] == ""){
-    echo '<script>alert("Please Login First");</script>';
-    echo '<script>window.location.href = "log_in.php";</script>';
-    exit();
-}else{
-    $email = $_SESSION["email"];
 }
 
 if(isset($_POST["id"])){
@@ -22,7 +18,6 @@ if(isset($_POST["id"])){
     }else{
         $sql = "SELECT * FROM inventory where id = $id";
         $result = mysqli_query($conn, $sql);
-        
         if(mysqli_num_rows($result) == 1){
             $row = mysqli_fetch_assoc($result);
             $_SESSION["cart_ids"][$id] = [

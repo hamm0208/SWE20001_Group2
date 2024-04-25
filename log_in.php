@@ -143,7 +143,7 @@
                 <input type="email" name="email" id="email" placeholder="Email">
                 <input type="password" name="password" id="password" placeholder="Password">
                 <button type="submit" name="log_in_submit" id="loginButton">Log In</button>
-                <a href="index.php" class="form-button bg-danger">Cancel</a>
+                <a href="index.php" class="form-button bg-danger">Back to home page</a>
             </form>
             <span class="login-link">Don't have an account? <a href="registration.php">Sign Up Here!</a></span>
         </div>
