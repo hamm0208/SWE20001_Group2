@@ -5,7 +5,7 @@
 .nav_management{
     background-color: #e8d9c3;
     border-radius: 15px;
-    height: 95vh;
+    height: 100%;
 }
 .linkToManagementAddItem{
     text-decoration: none;

@@ -37,18 +37,21 @@
                 exit();
         }
     }catch(Exception $e){};
-    $find_email = "SELECT * FROM users WHERE email = '$email'";
-    $result = mysqli_query($conn, $find_email);
-
-    if(mysqli_num_rows($result) == 1){
-        $profile_data = array();
-        $row = mysqli_fetch_assoc($result);
-        $profile_data['fname'] = $row['first_name'];
-        $profile_data['lname'] = $row['last_name'];
-        $profile_data['dob'] = $row['dob'];
-        $profile_data['gender'] = $row['gender'];
-        $profile_data['contact_number'] = $row['contact_number'];
-        $profile_data['profile_image'] = $row['profile_image'];
+    $id_sort_asc = true;
+    if(isset($_GET['ID_sort'])){
+        if($_GET['ID_sort'] == 0){
+            $id_sort_asc = false;
+        }else{
+            $id_sort_asc = true;
+        }
+    }
+    $total_sort_asc = null;
+    if(isset($_GET['total_sort'])){
+        if($_GET['total_sort'] == 0){
+            $total_sort_asc = false;
+        }else if($_GET['total_sort'] == 1){
+            $total_sort_asc = true;
+        }
     }
     ?>
     <div class="container-fluid">
@@ -102,64 +105,100 @@
             <div class="col-10 ">
                 <div class="row">
                     <div class="col-10 pt-5">
-                        <h1 class="pt-5 fira-sans-black">Manage Inventory</h1>
+                        <h1 class="pt-5 fira-sans-black">Order History</h1>
                     </div>
                 </div>
                 <div class="container-fluid inventory_container">
-                    <button class='playfair-display'  onclick="location.href='management_addItem.php';">Add new item</button>
                     <div class="table-responsive ">
                     <table class="table table-striped table-hover  mt-3">
                         <thead class="thead-dark">
                             <tr>
                                 <th class='py-3 fira-sans-black align-middle text-center dark-header'>
-                                    Item ID
+                                    <a class='text-dark' href="management_orders.php?ID_sort=<?php echo $id_sort_asc ? '0' : '1'; ?>">Order ID</a>
+                                    <?php  echo $id_sort_asc ? '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m280-400 200-200 200 200H280Z"/></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-360 280-560h400L480-360Z"/></svg>' ?>
                                 </th>
                                 <th class='py-3 fira-sans-black align-middle dark-header'>
-                                    Name
+                                    Email
                                 </th>
                                 <th class='py-3 fira-sans-black align-middle dark-header'>
-                                    Type
+                                    Order Date & Time
                                 </th>
                                 <th class='py-3 fira-sans-black align-middle dark-header'>
-                                    Category
+                                    <a class='text-dark' href="management_orders.php?total_sort=<?php echo $total_sort_asc ? '0' : '1'; ?>">Total</a>
+                                    
+                                    <?php 
+                                    if($total_sort_asc === true){
+                                        echo '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m280-400 200-200 200 200H280Z"/></svg>'; 
+                                    }else if($total_sort_asc === false){
+                                        echo '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-360 280-560h400L480-360Z"/></svg>' ;
+                                    }
+                                    ?>
+
                                 </th>
                                 <th class='py-3 fira-sans-black align-middle dark-header'>
-                                    Inventory
+                                    Status
                                 </th>
                                 <th class='py-3 fira-sans-black align-middle dark-header'>
-                                    Edit
-                                </th>
-                                <th class='py-3 fira-sans-black align-middle dark-header'>
-                                    Delete
+                                    Order Details
                                 </th>
                             </tr>
                         </thead>
                         <?php
-                        $sql = "SELECT * FROM inventory";
+                        if($id_sort_asc){
+                            $sql = "SELECT * FROM orders";
+                        }else{
+                            $sql = "SELECT * FROM orders ORDER BY id DESC";
+                        }
+                        if($total_sort_asc != null){
+                            if($total_sort_asc){
+                                $sql = "SELECT * FROM orders ORDER BY total DESC";
+                            }else{
+                                $sql = "SELECT * FROM orders ORDER BY total DESC";
+                            }
+                        }
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_array($result)) {
-                                $itemID = $row['id'];
-                                $itemName = $row['name'];
-                                $itemType = $row['type'];
-                                $itemCategory = $row['category'];
-                                $itemInventory = $row['inventory'];
+                                $orderStatus = $row['status'];
+                                $bg_color = '';
+                                $text_color = '';
+            
+                                switch ($orderStatus) {
+                                    case 'In Progress':
+                                        $bg_color = 'bg-warning';
+                                        $text_color = 'text-dark';
+                                        break;
+                                    case 'Cancelled':
+                                        $bg_color = 'bg-danger';
+                                        $text_color = 'text-white';
+                                        break;
+                                    case 'Complete':
+                                        $bg_color = 'bg-success';
+                                        $text_color = 'text-white';
+                                        break;
+                                    default:
+                                        $bg_color = '';
+                                        $text_color = '';
+                                }
+                                $orderID = $row['id'];
+                                $orderEmail = $row['user_email'];
+                                $orderDate = $row['order_date'];
+                                $orderStatus = $row['status'];
+                                $orderTotal = $row['total'];
                                 echo "<tr>";
-                                echo "<td class='playfair-display text-center align-middle'>", $itemID, "</td>";
-                                echo "<td class='playfair-display align-middle'>", $itemName, "</td>";
-                                echo "<td class='playfair-display align-middle'>", $itemType, "</td>";
-                                echo "<td class='playfair-display align-middle'>", $itemCategory, "</td>";
-                                echo "<td class='playfair-display align-middle'>", $itemInventory, "</td>";
-                                echo "<td> <a href='management_editItem.php?item_id=" . $itemID . "'><img src='Images/web_resources/edit.png' alt='edit' class='event-logo'></a></td>";
-                                echo "<td> <a href='management_deleteItem.php?item_id=" . $itemID . "'><img src='Images/web_resources/trash.png' alt='edit' class='event-logo'></a></td>";
+                                echo "<td class='p-3 text-center align-middle'>", $orderID, "</td>";
+                                echo "<td class='p-3 align-middle'>", $orderEmail, "</td>";
+                                echo "<td class='p-3 align-middle'>", $orderDate, "</td>";
+                                echo "<td class='p-3 align-middle'> RM", $orderTotal, "</td>";
+                                echo "<td class='p-3 align-middle'> <span class='status-span p-2 $bg_color $text_color'>" . $orderStatus . "</span></td>";
+                                echo "<td class= 'p-3 align-middle'><a href='management_orderDetails.php?orderID=" . $orderID . "'>More Details</a></td>";
                                 echo "</tr>";
                             }
                         }
                         ?>
                     </table>
-
-            </div>
                 </div>
+            </div>
                 
             </div>
         </div>
