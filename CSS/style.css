@@ -95,6 +95,10 @@ width: 100%;
 .inventory_container{
     margin-top: 6%;
 }
+.order_container{
+    margin-top: 6%;
+}
+
 .cart_icon{
   margin: auto;
   padding: 5px;
