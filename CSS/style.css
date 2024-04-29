@@ -120,7 +120,7 @@ font-weight: bold;
   border: 1px solid black;
   border-radius: 30px;
 }
-.inventory_container button{
+.management_btn{
     appearance: none;
     background-color: #e8d9c3;
     border: 2px solid #1A1A1A;
@@ -134,7 +134,7 @@ font-weight: bold;
     font-weight: 600;
     line-height: normal;
     margin: 0;
-    min-width: 0;
+    min-width: 100;
     outline: none;
     padding: 10px 20px;
     text-align: center;
@@ -145,13 +145,13 @@ font-weight: bold;
     touch-action: manipulation;
     will-change: transform; 
 }
-.inventory_container button:hover{
+.management_btn:hover{
     color: #fff;
     background-color: #1A1A1A;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
 }
-.inventory_container button:active {
+.management_btn:active {
   box-shadow: none;
   transform: translateY(0);
 }

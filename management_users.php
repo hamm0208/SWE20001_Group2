@@ -40,6 +40,15 @@
             exit();
         }
     }
+    if(isset($_GET['email'])){
+        $email = $_GET['email'];
+    }
+    if(isset($_GET['name'])){
+        $name = $_GET['name'];
+    }
+    if(isset($_GET['type'])){
+        $type = $_GET['type'];
+    }
     
     ?>
     <div class="container-fluid">
@@ -51,8 +60,39 @@
                     <div class="col-10 pt-5 mx-3">
                         <h1 class="pt-5 fira-sans-black">Users</h1>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class='playfair-display management_btn mt-4'  onclick="location.href='management_addStaff.php';">Add new staff</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="container-fluid order_container">
+                    <form action="management_users.php" method="get">
+                        <div class="row">
+                            <div class="col">
+                                <label for="email" class='fira-sans-black'>Email:</label>
+                                <input type="text" name='email' placeholder="Search for email" class="w-75" value='<?php echo isset($_GET['email'])? $email: ""?>'>
+                            </div>
+                            <div class="col">
+                                <label for="name" class='fira-sans-black'>Name:</label>
+                                <input type="text" name='name' placeholder="Search for name" class="w-75" value='<?php echo isset($_GET['name'])? $name: ""?>'>
+                            </div>
+                            <div class="col">
+                                <label for="type" class='fira-sans-black'>User Type:</label>
+                                <select id="type" name="type" class="w-50">
+                                    <option value="All" <?php echo ($_GET['type'] ?? '') === 'All' ? 'selected' : ''; ?>>All</option>
+                                    <option value="customer" <?php echo ($_GET['type'] ?? '') === 'customer' ? 'selected' : ''; ?>>Customer</option>
+                                    <option value="management" <?php echo ($_GET['type'] ?? '') === 'management' ? 'selected' : ''; ?>>Management</option>
+                                    <option value="operation" <?php echo ($_GET['type'] ?? '') === 'operation' ? 'selected' : ''; ?>>Operation</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <button types='submit' class='management_btn w-25'>Search</button>
+                                <button type='reset' class='management_btn w-25' onclick="window.location.href = 'management_users.php'">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                    
                     <div class="table-responsive">
                         <table class='table table-striped table-hover mt-3'>
                             <thead>
@@ -68,6 +108,21 @@
                             <tbody>
                             <?php
                                 $sql = "SELECT * FROM users";
+                                if(isset($_GET['email'])){
+                                    $email = $_GET['email'];
+                                    if(!empty($email)){
+                                        $sql .= " WHERE email LIKE '%$email%'";                                
+                                    }
+                                }
+                                if(isset($_GET['name'])){
+                                    $name = $_GET['name'];
+                                    if(!empty($name)){
+                                        $sql .= isset($_GET['email']) && $_GET['email'] !== "" || isset($_GET['type']) && $_GET['type'] === "" 
+                                        ? " AND CONCAT(first_name, ' ', last_name) LIKE '%$name%'" 
+                                        : " WHERE CONCAT(first_name, ' ', last_name) LIKE '%$name%'";
+
+                                    }
+                                }
                                 $result_users = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result_users) > 0) {
                                     while ($row_users = mysqli_fetch_array($result_users)) {
@@ -76,6 +131,16 @@
                                         $userLName = $row_users['last_name'];
                                         $userNumber = $row_users['contact_number'];
                                         $sql_accounts = "SELECT * FROM accounts WHERE email = '$userEmail'";
+                                        if(isset($_GET['type'])){
+                                            $type = $_GET['type'];
+                                            if($type !== 'All') {
+                                                $sql_accounts = "SELECT * FROM accounts WHERE  email = '$userEmail' AND type = '$type'";
+                                            }else{
+                                                $sql_accounts = "SELECT * FROM accounts WHERE email = '$userEmail'";
+                                            }
+                                        }else{
+                                            $sql_accounts = "SELECT * FROM accounts WHERE email = '$userEmail'"; 
+                                        }
                                         $result_accounts = mysqli_query($conn, $sql_accounts);
                                         if (mysqli_num_rows($result_accounts) > 0) {
                                             while ($row_accounts = mysqli_fetch_array($result_accounts)) {
@@ -83,20 +148,25 @@
                                                     $userType = "Customer";
                                                 } else if ($row_accounts['type'] == "management") {
                                                     $userType = "Management";
-                                                } else if ($row_accounts['type'] == "operational") {
+                                                } else if ($row_accounts['type'] == "operation") {
                                                     $userType = "Operation";
                                                 }
+                                                echo "<tr>";
+                                                echo "<td class='p-3 text-center align-middle'>", $userEmail, "</td>";
+                                                echo "<td class='p-3 align-middle'>", $userFName . " " . $userLName, "</td>";
+                                                echo "<td class='p-3 align-middle'>", $userType, "</td>";
+                                                echo "<td class='p-3 align-middle'>", $userNumber, "</td>";
+                                                echo "<td> <a href='management_editUser.php?email=" . $userEmail . "'><img src='Images/web_resources/edit.png' alt='edit' class='event-logo'></a></td>";
+                                                if($userType == "Customer"){
+                                                    echo "<td></td>";
+                                                }else{
+                                                    echo "<td> <a href='management_deleteUser.php?email=" . $userEmail . "'><img src='Images/web_resources/trash.png' alt='edit' class='event-logo'></a></td>";
+                                                }
+                                                echo "</tr>";
                                                 break;
                                             }
                                         }
-                                        echo "<tr>";
-                                        echo "<td class='p-3 text-center align-middle'>", $userEmail, "</td>";
-                                        echo "<td class='p-3 align-middle'>", $userFName . " " . $userLName, "</td>";
-                                        echo "<td class='p-3 align-middle'>", $userType, "</td>";
-                                        echo "<td class='p-3 align-middle'>", $userNumber, "</td>";
-                                        echo "<td> <a href='management_editUser.php?email=" . $userEmail . "'><img src='Images/web_resources/edit.png' alt='edit' class='event-logo'></a></td>";
-                                        echo "<td> <a href='management_deleteUser.php?email=" . $userEmail . "'><img src='Images/web_resources/trash.png' alt='edit' class='event-logo'></a></td>";
-                                        echo "</tr>";
+                                        
                                     }
                                 }
                             ?>

@@ -79,8 +79,7 @@
                             </div>
                             <div class="col">
                                 <label for="date" class='fira-sans-black'>Order Date:</label>
-                                
-                                <input type="date" name='date'  class="w-75" value='<?php echo isset($_GET['date'])? $date: ""?>'>
+                                <input type="date" name='date'  class="w-50" value='<?php echo isset($_GET['date'])? $date: ""?>'>
                             </div>
                             <div class="col">
                                 <label for="status" class='fira-sans-black'>Status:</label>
@@ -92,8 +91,8 @@
                                 </select>
                             </div>
                             <div class="col">
-                            <button types='submit' class='mt-2 w-25'>Search</button>
-                            <button type='reset' class='mt-2 w-25' onclick="window.location.href = 'management_orders.php'">Reset</button>
+                            <button types='submit' class='w-25 management_btn'>Search</button>
+                            <button type='reset' class='w-25 management_btn' onclick="window.location.href = 'management_orders.php'">Reset</button>
                             </div>
                         </div>
                     </form>

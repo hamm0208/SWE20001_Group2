@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="container-fluid inventory_container">
-                    <button class='playfair-display'  onclick="location.href='management_addItem.php';">Add new item</button>
+                    <button class='playfair-display management_btn'  onclick="location.href='management_addItem.php';">Add new item</button>
                     <div class="table-responsive ">
                     <table class="table table-striped table-hover  mt-3">
                         <thead class="thead-dark">
