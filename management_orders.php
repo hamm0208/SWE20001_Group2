@@ -124,8 +124,7 @@
                                             }
                                            $getVariable = rtrim($getVariable, "&");
                                             echo "<a class='text-light' href=\"management_orders.php?" . $getVariable . "&ID_sort=" . ($id_sort_asc ? '0' : '1') . "\">Order ID</a>";
-                                            echo $id_sort_asc ? '<svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" height="24" viewBox="0 -960 960 960" width="24"><path d="m280-400 200-200 200 200H280Z"/></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-360 280-560h400L480-360Z"/></svg>'
-                                        
+                                            echo $id_sort_asc ? '<svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" height="24" viewBox="0 -960 960 960" width="24"><path d="m280-400 200-200 200 200H280Z"/></svg>' : '<svg  fill="#ffffff" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-360 280-560h400L480-360Z"/></svg>'
                                         ?>
                                     </th>
                                     <th class='py-3 fira-sans-black align-middle dark-header bg-dark text-light'>
