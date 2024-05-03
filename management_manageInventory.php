@@ -216,13 +216,16 @@
                                $sql .= strpos($sql, 'WHERE') !== false ? " AND category = '$category'" : " WHERE category = '$category'";
                            }
                        }
-                       
-                       if ($id_sort_asc) {
-                           $sql .= " ORDER BY id ASC";
-                       } else {
-                           $sql .= " ORDER BY id DESC";
-                       }
-                       
+
+                    if ($inventory_sort_asc !== null) {
+                        $sql .= " ORDER BY inventory " . ($inventory_sort_asc ? "ASC" : "DESC");
+                    }else{
+                        if ($id_sort_asc) {
+                            $sql .= " ORDER BY id ASC";
+                        } else {
+                            $sql .= " ORDER BY id DESC";
+                        }
+                    }
                        $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_array($result)) {
