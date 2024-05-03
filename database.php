@@ -48,13 +48,23 @@ if($count == 0){
         ('Classic Margherita Pizza', 'Authentic Italian pizza topped with tomato sauce, fresh mozzarella cheese, basil leaves, and a drizzle of olive oil.', 'Food', 'Western', 100, 20, 'margherita_pizza.jpg'),
         ('Grilled Chicken Caesar Salad', 'Crisp romaine lettuce tossed with grilled chicken breast, croutons, Parmesan cheese, and Caesar dressing.', 'Food', 'Western', 100, 12, 'caesar_salad.jpg'),
         ('Spaghetti Bolognese', 'Al dente spaghetti pasta served with a rich and savory Bolognese sauce made from ground beef, tomatoes, onions, carrots, and herbs.', 'Food', 'Western', 100, 12, 'spaghetti_bolognese.jpg'),
-        ('Fresh Fruit Smoothie', 'A refreshing blend of fresh fruits such as strawberries, bananas, and mangoes, blended with yogurt and ice.', 'Beverage', 'Western', 100, 6, 'fruit_smoothie.jpg')
+        ('Fresh Fruit Smoothie', 'A refreshing blend of fresh fruits such as strawberries, bananas, and mangoes, blended with yogurt and ice.', 'Beverage', 'Western', 100, 6, 'fruit_smoothie.jpg'),
+        ('Nasi Lemak', 'A traditional Malaysian dish consisting of fragrant rice cooked in coconut milk, served with sambal (spicy chili paste), fried crispy anchovies, roasted peanuts, sliced cucumber, and a hard-boiled egg.', 'Food', 'Malaysian', 100, 8, 'nasi_lemak.jpg'),
+        ('Kimchi Fried Rice', 'A popular Korean dish made with cooked rice, kimchi, vegetables, and often meat or seafood, all stir-fried together in a hot pan.', 'Food', 'Korean', 100, 10, 'kimchi_fried_rice.jpg'),
+        ('Chicken Teriyaki', 'Grilled chicken glazed with a sweet and savory teriyaki sauce, served with steamed rice and vegetables.', 'Food', 'Japanese', 100, 14, 'chicken_teriyaki.jpg'),
+        ('Sushi Platter', 'Assorted sushi rolls and nigiri, including tuna, salmon, shrimp, and avocado, served with pickled ginger, wasabi, and soy sauce.', 'Food', 'Japanese', 100, 18, 'sushi_platter.jpg'),
+        ('Beef Rendang', 'A flavorful dish made with tender beef slow-cooked in a rich and aromatic coconut curry sauce, flavored with a blend of spices such as lemongrass, galangal, ginger, and turmeric.', 'Food', 'Malaysian', 100, 16, 'beef_rendang.jpg'),
+        ('Bibimbap', 'A Korean mixed rice dish topped with assorted vegetables, a fried egg, and sliced beef or tofu, served with spicy gochujang sauce.', 'Food', 'Korean', 100, 12, 'bibimbap.jpg'),
+        ('Nasi Goreng', 'Malaysian fried rice cooked with a mix of vegetables, shrimp, chicken, and flavored with sweet soy sauce, chili, and shrimp paste, served with a fried egg on top.', 'Food', 'Malaysian', 100, 10, 'nasi_goreng.jpg'),
+        ('Tonkatsu', 'A Japanese dish consisting of breaded and deep-fried pork cutlets, served with shredded cabbage and tonkatsu sauce.', 'Food', 'Japanese', 100, 15, 'tonkatsu.jpg'),
+        ('Iced Teh Tarik', 'A Malaysian classic - black tea sweetened with condensed milk and \'pulled\' to create a frothy top, served over ice.', 'Beverage', 'Malaysian', 100, 5, 'iced_teh_tarik.jpg'),
+        ('Soju', 'A popular Korean alcoholic beverage distilled from rice, barley, or wheat, known for its smooth taste and versatility.', 'Alcohol', 'Korean', 100, 10, 'soju.jpg'),
+        ('Green Tea Matcha Latte', 'A Japanese-inspired drink made with matcha green tea powder, steamed milk, and a touch of sweetness.', 'Beverage', 'Japanese', 100, 6, 'matcha_latte.jpg')
     ";
 
 mysqli_query($conn, $sql);
 
 }
-
 //Accounts ONLY
 $sql = "CREATE TABLE IF NOT EXISTS accounts (
     email VARCHAR(50) PRIMARY KEY NOT NULL,

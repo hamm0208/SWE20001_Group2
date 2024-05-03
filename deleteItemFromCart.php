@@ -4,10 +4,8 @@ session_start();
 if (!isset($_SESSION["cart_ids"])) {
     $_SESSION["cart_ids"] = [];
 }
-echo var_dump($_SESSION["cart_ids"]);
 if (isset($_GET["itemID"])) {
     $id_to_delete = intval($_GET["itemID"]);
-    echo $id_to_delete."\t";
     $found = false;
     foreach ($_SESSION["cart_ids"] as $key => $id) {
         if ($_GET["itemID"] == $id['itemID']) {

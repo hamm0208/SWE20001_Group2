@@ -94,7 +94,7 @@
                                 <input type="text" name='name' placeholder="Search for item name" class="w-75" value='<?php echo isset($_GET['name'])? $name: ""?>'>
                             </div>
                             <div class="col">
-                                <label for="type" class='fira-sans-black'>Status:</label>
+                                <label for="type" class='fira-sans-black'>Type:</label>
                                 <select id="type" name="type" class="w-75">
                                     <option value="All" <?php echo ($_GET['type'] ?? '') === 'All' ? 'selected' : ''; ?>>All</option>
                                     <option value="Food" <?php echo ($_GET['type'] ?? '') === 'Food' ? 'selected' : ''; ?>>Food</option>
