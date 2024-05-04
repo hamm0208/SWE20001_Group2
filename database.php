@@ -128,4 +128,24 @@ $sql = "CREATE TABLE IF NOT EXISTS order_items (
     FOREIGN KEY (item_id) REFERENCES inventory(id) ON DELETE CASCADE ON UPDATE CASCADE
 )";
 mysqli_query($conn, $sql);
+
+//Packages
+$sql = "CREATE TABLE IF NOT EXISTS packages (
+    package_id VARCHAR(4) PRIMARY KEY NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2)
+)";
+mysqli_query($conn, $sql);
+
+//Package Item
+$sql = "CREATE TABLE IF NOT EXISTS package_items (
+    package_id VARCHAR(4),
+    item_id INT(4),
+    quantity INT(11),
+    PRIMARY KEY (package_id, item_id), -- Composite primary key
+    FOREIGN KEY (package_id) REFERENCES packages(package_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (item_id) REFERENCES inventory(id) ON DELETE CASCADE ON UPDATE CASCADE
+)";
+mysqli_query($conn, $sql);
 ?>

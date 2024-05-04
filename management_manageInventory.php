@@ -16,6 +16,7 @@
 </head>
 <body id="background">
     <?php
+    include "database.php";
     include("font.php");
     include('connection.php');
     session_start();
@@ -89,13 +90,13 @@
                 <div class="container-fluid inventory_container">
                     <form action="management_manageInventory.php" method="GET">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-4">
                                 <label for="name" class='fira-sans-black'>Item Name:</label>
                                 <input type="text" name='name' placeholder="Search for item name" class="w-75" value='<?php echo isset($_GET['name'])? $name: ""?>'>
                             </div>
                             <div class="col">
                                 <label for="type" class='fira-sans-black'>Type:</label>
-                                <select id="type" name="type" class="w-75">
+                                <select id="type" name="type" class="w-50">
                                     <option value="All" <?php echo ($_GET['type'] ?? '') === 'All' ? 'selected' : ''; ?>>All</option>
                                     <option value="Food" <?php echo ($_GET['type'] ?? '') === 'Food' ? 'selected' : ''; ?>>Food</option>
                                     <option value="Beverage" <?php echo ($_GET['type'] ?? '') === 'Beverage' ? 'selected' : ''; ?>>Beverage</option>

@@ -9,6 +9,7 @@
 </head>
 <body id="background">
     <?php
+    include "database.php";
     include("font.php");
     include('connection.php');
     session_start();
