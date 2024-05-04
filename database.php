@@ -58,7 +58,7 @@ if($count == 0){
         ('Nasi Goreng', 'Malaysian fried rice cooked with a mix of vegetables, shrimp, chicken, and flavored with sweet soy sauce, chili, and shrimp paste, served with a fried egg on top.', 'Food', 'Malaysian', 100, 10, 'nasi_goreng.jpg'),
         ('Tonkatsu', 'A Japanese dish consisting of breaded and deep-fried pork cutlets, served with shredded cabbage and tonkatsu sauce.', 'Food', 'Japanese', 100, 15, 'tonkatsu.jpg'),
         ('Iced Teh Tarik', 'A Malaysian classic - black tea sweetened with condensed milk and \'pulled\' to create a frothy top, served over ice.', 'Beverage', 'Malaysian', 100, 5, 'iced_teh_tarik.jpg'),
-        ('Soju', 'A popular Korean alcoholic beverage distilled from rice, barley, or wheat, known for its smooth taste and versatility.', 'Alcohol', 'Korean', 100, 10, 'soju.jpg'),
+        ('Soju', 'A popular Korean alcoholic beverage distilled from rice, barley, or wheat, known for its smooth taste and versatility.', 'Beverage', 'Korean', 100, 10, 'soju.jpg'),
         ('Green Tea Matcha Latte', 'A Japanese-inspired drink made with matcha green tea powder, steamed milk, and a touch of sweetness.', 'Beverage', 'Japanese', 100, 6, 'matcha_latte.jpg')
     ";
 
@@ -133,7 +133,6 @@ mysqli_query($conn, $sql);
 $sql = "CREATE TABLE IF NOT EXISTS packages (
     package_id VARCHAR(4) PRIMARY KEY NOT NULL,
     name VARCHAR(255) NOT NULL,
-    description TEXT,
     price DECIMAL(10, 2)
 )";
 mysqli_query($conn, $sql);
@@ -148,4 +147,36 @@ $sql = "CREATE TABLE IF NOT EXISTS package_items (
     FOREIGN KEY (item_id) REFERENCES inventory(id) ON DELETE CASCADE ON UPDATE CASCADE
 )";
 mysqli_query($conn, $sql);
+
+$preset_packages = array(
+    array(
+        'name' => 'Duo plater',
+        'price' => 50,
+        'items' => array(
+            array('item_id' => 2, 'quantity' => 1), // Classic Margherita Pizza
+            array('item_id' => 7, 'quantity' => 1), // Kimchi fried rice
+            array('item_id' => 15, 'quantity' => 2) // Soju
+        )
+    ),
+    array(
+        'name' => 'Family Feast',
+        'price' => 60,
+        'items' => array(
+            array('item_id' => 1, 'quantity' => 1), // Deluxe Cheeseburger
+            array('item_id' => 3, 'quantity' => 1), // Grilled Chicken Caesar Salad
+            array('item_id' => 6, 'quantity' => 1), // Nasi Lemak
+            array('item_id' => 12, 'quantity' => 1), // Nasi Goreng
+            array('item_id' => 14, 'quantity' => 4) // Iced Teh Tarik
+        )
+    ),
+    array(
+        'name' => 'Health Boost',
+        'price' => 30,
+        'items' => array(
+            array('item_id' => 3, 'quantity' => 1), // Grilled Chicken Caesar Salad
+            array('item_id' => 5, 'quantity' => 1), // Fresh Fruit Smoothie
+            array('item_id' => 11, 'quantity' => 1) // Biibimbap
+        )
+    )
+);
 ?>

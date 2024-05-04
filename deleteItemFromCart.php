@@ -10,7 +10,6 @@ if (isset($_GET["itemID"])) {
     foreach ($_SESSION["cart_ids"] as $key => $id) {
         if ($_GET["itemID"] == $id['itemID']) {
             unset($_SESSION["cart_ids"][$key]);
-            $_SESSION["cart_ids"] = array_values($_SESSION["cart_ids"]);
             $found = true;
             echo "<script>alert('Item has been removed from the cart');</script>";
             break;

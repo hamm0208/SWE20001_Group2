@@ -68,6 +68,7 @@ if($_SESSION["email"] == ""){
             </thead>
             <?php
             $grand_total = 0;
+            $index = 0;
             foreach ($_SESSION["cart_ids"] as $item) {
                 if ($item['itemQty'] > 0) {
                     echo "<tr>";
@@ -105,6 +106,7 @@ if($_SESSION["email"] == ""){
                         echo "</td>";
                     echo "</tr>";
                     $grand_total += $totalPrice; 
+                    $index++;
                 }
             }
             
