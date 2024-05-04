@@ -89,7 +89,6 @@ if(mysqli_num_rows(mysqli_query($conn,$find))!= 1){
     mysqli_query($conn, $sql);
 }
 
-$find = "SELECT * FROM accounts where email='thenbeckham@gmail.com'";
 
 $beckham_pw = password_hash("12345", PASSWORD_DEFAULT);
 $anjaana_pw = password_hash("12345", PASSWORD_DEFAULT);
@@ -97,17 +96,22 @@ $crystal_pw = password_hash("12345", PASSWORD_DEFAULT);
 $sakib_pw = password_hash("12345", PASSWORD_DEFAULT);
 $irene_pw = password_hash("12345", PASSWORD_DEFAULT);
 $preset_thomas_pw = password_hash("12345", PASSWORD_DEFAULT);
-if(mysqli_num_rows(mysqli_query($conn,$find))!= 1){
-    $sql = "INSERT IGNORE INTO accounts (email, password, type)
+$sql_check_empty = "SELECT COUNT(*) FROM accounts";
+$result = mysqli_query($conn, $sql_check_empty);
+$row = mysqli_fetch_array($result);
+$count = $row[0];
+
+if ($count == 0) {
+    $sql_insert_preset = "INSERT INTO accounts (email, password, type)
         VALUES
         ('thenbeckham@gmail.com', '$beckham_pw', 'management'),
-            ('everlynchin09@gmail.com', '$anjaana_pw', 'management'),
-            ('anjanaalyann@gmail.com', '$crystal_pw', 'management'),
-            ('crystalgoh01@gmail.com', '$sakib_pw', 'management'),
-            ('isakibul623@gmail.com', '$irene_pw', 'management'),
-            ('ThomasShelby@gmail.com', '$preset_thomas_pw', 'customer');
-    ";
-    mysqli_query($conn, $sql);
+        ('everlynchin09@gmail.com', '$anjaana_pw', 'management'),
+        ('anjanaalyann@gmail.com', '$crystal_pw', 'management'),
+        ('crystalgoh01@gmail.com', '$sakib_pw', 'management'),
+        ('isakibul623@gmail.com', '$irene_pw', 'management'),
+        ('ThomasShelby@gmail.com', '$preset_thomas_pw', 'customer')";
+        
+    mysqli_query($conn, $sql_insert_preset);
 }
 
 //Orders
@@ -179,4 +183,33 @@ $preset_packages = array(
         )
     )
 );
+$sql_check_empty = "SELECT COUNT(*) FROM packages";
+$result = mysqli_query($conn, $sql_check_empty);
+$row = mysqli_fetch_array($result);
+$count = $row[0];
+
+if ($count == 0) {
+    $sql_get_max_id = "SELECT MAX(CAST(SUBSTRING(package_id, 2) AS UNSIGNED)) FROM packages";
+    $result = mysqli_query($conn, $sql_get_max_id);
+    $row = mysqli_fetch_array($result);
+    $max_id = $row[0];
+    $max_id = $max_id ? $max_id : 0; // If no packages, set max_id to 0
+
+    foreach ($preset_packages as $package) {
+        $package_id = "P" . ($max_id + 1); // Construct package_id based on the max_id
+        
+        // Insert package into the packages table
+        $sql = "INSERT INTO packages (package_id, name, price) VALUES ('$package_id', '{$package['name']}', '{$package['price']}')";
+        mysqli_query($conn, $sql);
+        
+        // Insert package items into the package_items table
+        foreach ($package['items'] as $item) {
+            $item_id = $item['item_id'];
+            $quantity = $item['quantity'];
+            $sql = "INSERT INTO package_items (package_id, item_id, quantity) VALUES ('$package_id', '$item_id', '$quantity')";
+            mysqli_query($conn, $sql);
+        }
+        $max_id++;
+    }
+}
 ?>
