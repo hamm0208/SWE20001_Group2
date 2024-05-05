@@ -137,8 +137,9 @@ mysqli_query($conn, $sql);
 $sql = "CREATE TABLE IF NOT EXISTS packages (
     package_id VARCHAR(4) PRIMARY KEY NOT NULL,
     name VARCHAR(255) NOT NULL,
-    avaialbility VARCHAR(255) NOT NULL,
-    price DECIMAL(10, 2)
+    availability VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2),
+    image VARCHAR(100) NULL
 )";
 mysqli_query($conn, $sql);
 
@@ -161,7 +162,8 @@ $preset_packages = array(
             array('item_id' => 2, 'quantity' => 1), // Classic Margherita Pizza
             array('item_id' => 7, 'quantity' => 1), // Kimchi fried rice
             array('item_id' => 15, 'quantity' => 2) // Soju
-        )
+        ),
+        'image' => "duo_platter.jpg"
     ),
     array(
         'name' => 'Family Feast',
@@ -172,7 +174,8 @@ $preset_packages = array(
             array('item_id' => 6, 'quantity' => 1), // Nasi Lemak
             array('item_id' => 12, 'quantity' => 1), // Nasi Goreng
             array('item_id' => 14, 'quantity' => 4) // Iced Teh Tarik
-        )
+        ),
+        'image' => "family_feast.jpg"
     ),
     array(
         'name' => 'Health Boost',
@@ -181,7 +184,8 @@ $preset_packages = array(
             array('item_id' => 3, 'quantity' => 1), // Grilled Chicken Caesar Salad
             array('item_id' => 5, 'quantity' => 1), // Fresh Fruit Smoothie
             array('item_id' => 11, 'quantity' => 1) // Biibimbap
-        )
+        ),
+        'image' => "health_boost.jpg"
     )
 );
 $sql_check_empty = "SELECT COUNT(*) FROM packages";
@@ -200,7 +204,7 @@ if ($count == 0) {
         $package_id = "P" . ($max_id + 1); // Construct package_id based on the max_id
         
         // Insert package into the packages table
-        $sql = "INSERT INTO packages (package_id, name, avaialbility, price) VALUES ('$package_id', '{$package['name']}', true ,'{$package['price']}')";
+        $sql = "INSERT INTO packages (package_id, name, availability, price, image) VALUES ('$package_id', '{$package['name']}', true ,'{$package['price']}', '{$package['image']}')";
         mysqli_query($conn, $sql);
         
         // Insert package items into the package_items table
