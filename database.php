@@ -137,6 +137,7 @@ mysqli_query($conn, $sql);
 $sql = "CREATE TABLE IF NOT EXISTS packages (
     package_id VARCHAR(4) PRIMARY KEY NOT NULL,
     name VARCHAR(255) NOT NULL,
+    avaialbility VARCHAR(255) NOT NULL,
     price DECIMAL(10, 2)
 )";
 mysqli_query($conn, $sql);
@@ -199,7 +200,7 @@ if ($count == 0) {
         $package_id = "P" . ($max_id + 1); // Construct package_id based on the max_id
         
         // Insert package into the packages table
-        $sql = "INSERT INTO packages (package_id, name, price) VALUES ('$package_id', '{$package['name']}', '{$package['price']}')";
+        $sql = "INSERT INTO packages (package_id, name, avaialbility, price) VALUES ('$package_id', '{$package['name']}', true ,'{$package['price']}')";
         mysqli_query($conn, $sql);
         
         // Insert package items into the package_items table
