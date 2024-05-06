@@ -44,16 +44,20 @@
         while ($row = mysqli_fetch_array($result)) {
             $item_qty = $row['quantity'];
             $item_id = $row['item_id'];
-            
-            $sql_inventory = "SELECT * FROM inventory WHERE id = '$item_id'";
+            if($item_id[0]=="P"){
+                $sql_inventory = "SELECT * FROM packages WHERE package_id = '$item_id'";
+            }else{
+                $sql_inventory = "SELECT * FROM inventory WHERE id = '$item_id'";
+            }
             $result_inventory = mysqli_query($conn, $sql_inventory);
             
             if(mysqli_num_rows($result_inventory) == 1){
                 $row_inventory = mysqli_fetch_assoc($result_inventory);
                 $order_items[$order_ID][] = [
                     "itemName" => $row_inventory["name"],
+                    "itemID" => $row_inventory["package_id"] ?? null,
                     "itemPrice" => $row_inventory["price"],
-                    "itemImgName" => $row_inventory["item_image_name"],
+                    "itemImgName" => $row_inventory["item_image_name"] ?? null,
                     "itemQty" => $item_qty
                 ];
             }
@@ -77,7 +81,7 @@
     border-radius: 12px;
 }
 .order-item-name{
-    font-size: 15px;
+    font-size: 20px;
 }
 
 </style>
@@ -111,18 +115,51 @@
                     foreach ($order_items as $order_ID => $items) {
                         foreach ($items as $item) {
                             echo "<tr>";
-                            echo "<td>";
+                            echo "<td class='border border-dark'>";
                             echo "<p class='playfair-display order-item-name text-center my-0'>{$item['itemName']}</p>";
-                            echo "<img src=\"Images/food_image/{$item['itemImgName']}\" alt=\"{$item['itemName']}\" class='img-fluid cart_item_img'>";
+                            if($item['itemID'][0] == "P"){
+                                $package_id = $item['itemID'];
+                                $sql_items = "SELECT * FROM package_items WHERE package_id='$package_id'";
+                                $result_items = mysqli_query($conn, $sql_items);
+                                echo "<ol class='package_list my-2 text-left'>";
+    
+                                if (mysqli_num_rows($result_items) > 0) {
+                                    while ($row_item = mysqli_fetch_array($result_items)) {
+                                        $item_id = $row_item["item_id"];
+                                        $quantity = $row_item["quantity"];
+                                        
+                                        // Query to retrieve item details from the inventory table
+                                        $sql_search_inventory = "SELECT * FROM inventory WHERE id = '$item_id'";
+                                        $result_search_inventory = mysqli_query($conn, $sql_search_inventory);
+                                        
+                                        // Check if the item details are found
+                                        if ($result_search_inventory && mysqli_num_rows($result_search_inventory) > 0) {
+                                            $row_inventory = mysqli_fetch_array($result_search_inventory);
+                                            $item_name = $row_inventory["name"];
+                                            
+                                            // Display item name along with its quantity
+                                            echo "<li>  {$quantity} {$item_name}</li>";
+                                        } else {
+                                            // Display a message if item details are not found
+                                            echo "Item details not found for item ID: {$item_id}";
+                                        }
+                                    }
+                                }else {
+                                    echo "No package items found.";
+                                    }
+                                echo "</ol>";
+                            }else{
+                                echo "<img src=\"Images/food_image/{$item['itemImgName']}\" alt=\"{$item['itemName']}\" class='img-fluid cart_item_img'>";
+                            }
                             echo "</td>";
-                            echo "<td class='align-middle h2'>";
+                            echo "<td class='align-middle h2 border border-dark'>";
                             echo "<span>{$item['itemPrice']}</span>";
                             echo "</td>";
-                            echo "<td class='align-middle h2'>";
+                            echo "<td class='align-middle h2 border border-dark'>";
                             // If you want to display item quantity, you can do so here
                             echo "<span>{$item['itemQty']}</span>";
                             echo "</td>";
-                            echo "<td class='align-middle h2 '>";
+                            echo "<td class='align-middle h2 border border-dark'>";
                             $totalPrice = $item['itemQty'] * $item['itemPrice'];
                             echo "<span>RM{$totalPrice}</span>";
                             echo "</td>";

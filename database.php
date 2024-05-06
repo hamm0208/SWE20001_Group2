@@ -133,12 +133,12 @@ mysqli_query($conn, $sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS order_items (
     order_id INT(4),
-    item_id INT(4),
+    item_id VARCHAR(4),
     quantity INT(11),
-    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (item_id) REFERENCES inventory(id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE ON UPDATE CASCADE
 )";
 mysqli_query($conn, $sql);
+
 
 //Packages
 $sql = "CREATE TABLE IF NOT EXISTS packages (

@@ -14,18 +14,32 @@ if (!isset($_SESSION["cart_ids"])) {
 if(isset($_POST["id"])){
     $id = $_POST["id"];
     if(array_key_exists($id, $_SESSION["cart_ids"])){
-        $sql = "SELECT * FROM inventory where id = $id";
-        $result = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($result) == 1){
-            $row = mysqli_fetch_assoc($result);
-            $inventory = $row['inventory'];
-        }
-
-        if($_SESSION["cart_ids"][$id]["itemQty"] < $inventory){
-            $_SESSION["cart_ids"][$id]["itemQty"] += 1;
-            echo "<script>alert('" . $_SESSION["cart_ids"][$id]["itemName"] . " has been added to your cart!');</script>";
+        if($id[0] == "P"){
+            $sql = "SELECT * FROM packages where package_id = '$id'";
+            $result = mysqli_query($conn, $sql);
+            if(mysqli_num_rows($result) == 1){
+                $row = mysqli_fetch_assoc($result);
+                if($row['availability'] == 1){
+                    $_SESSION["cart_ids"][$id]["itemQty"] += 1;
+                    echo "<script>alert('" . $_SESSION["cart_ids"][$id]["itemName"] . " has been added to your cart!');</script>";
+                }else{
+                    echo "<script>alert('" .$row['name'] . " is not available!');</script>";
+                }
+            }
         }else{
-            echo "<script>alert('" . $_SESSION["cart_ids"][$id]["itemName"] . " does not have enough stock!');</script>";
+            $sql = "SELECT * FROM inventory where id = $id";
+            $result = mysqli_query($conn, $sql);
+            if(mysqli_num_rows($result) == 1){
+                $row = mysqli_fetch_assoc($result);
+                $inventory = $row['inventory'];
+            }
+    
+            if($_SESSION["cart_ids"][$id]["itemQty"] < $inventory){
+                $_SESSION["cart_ids"][$id]["itemQty"] += 1;
+                echo "<script>alert('" . $_SESSION["cart_ids"][$id]["itemName"] . " has been added to your cart!');</script>";
+            }else{
+                echo "<script>alert('" . $_SESSION["cart_ids"][$id]["itemName"] . " does not have enough stock!');</script>";
+            }
         }
     }else{
         if($id[0] == "P"){
@@ -60,8 +74,10 @@ if(isset($_POST["id"])){
                         "itemQty" => 1
                     ];
                     echo "<script>alert('" . $_SESSION["cart_ids"][$id]["itemName"] . " has been added to your cart!');</script>";
+                    echo '<script>window.location.href = "food_beverage.php";</script>';
                 }else{
                     echo "<script>alert('" .$row['name'] . " does not have enough stock!');</script>";
+                    echo '<script>window.location.href = "food_beverage.php";</script>';
                 }
             }
         }

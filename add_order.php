@@ -15,7 +15,6 @@ if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
     foreach($_SESSION["cart_ids"] as $item){
         $grand_total+= ($item["itemPrice"] * $item['itemQty']);
     }
-    echo "<br>".$grand_total."<br>";
     
     //Inserting orders
     $sql = "INSERT INTO orders
@@ -35,21 +34,46 @@ if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
     foreach($_SESSION["cart_ids"] as $item){
         $id = $item['itemID'];
         $quantity = $item['itemQty'];
-
-        $sql = "SELECT inventory FROM inventory WHERE id = $id";
-        $result = mysqli_query($conn, $sql);
-        if ($result && mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $inventory_amount = $row['inventory'];
-        }
-
-        $updated_inventory = $inventory_amount -$quantity;
-        $sql = "UPDATE inventory
+        if($id[0] == "P"){
+            $sql_find_item = "SELECT * FROM package_items WHERE package_id = '$id'";
+            $result_find_item = mysqli_query($conn, $sql_find_item);
+            if (mysqli_num_rows($result_find_item) > 0) {
+                while ($row_item = mysqli_fetch_array($result_find_item)){
+                    $item_id = $row_item["item_id"];
+                    $item_quantity = $row_item["quantity"];
+                    $sql_search_inventory = "SELECT inventory FROM inventory WHERE id = '$item_id'";
+                    $result_search_inventory = mysqli_query($conn, $sql_search_inventory);
+                    if ($result_search_inventory && mysqli_num_rows($result_search_inventory) > 0) {
+                        $row = mysqli_fetch_assoc($result_search_inventory);
+                        $inventory_amount = $row['inventory'];
+                    }
+                    $updated_inventory = $inventory_amount -$item_quantity;
+                    $sql = "UPDATE inventory
+                        SET inventory = '$updated_inventory'
+                            WHERE id = $item_id
+                        ";
+                    $result = mysqli_query($conn, $sql);
+                }
+            }
+        }else{
+            $sql = "SELECT inventory FROM inventory WHERE id = $id";
+            $result = mysqli_query($conn, $sql);
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $inventory_amount = $row['inventory'];
+            }
+    
+            $updated_inventory = $inventory_amount -$quantity;
+            $sql = "UPDATE inventory
                     SET inventory = '$updated_inventory'
                         WHERE id = $id
-                ";
-        $result = mysqli_query($conn, $sql);
+                    ";
+            $result = mysqli_query($conn, $sql);
+        }
 
+        echo $total_rows;
+        echo $id;
+        echo $quantity;
         $sql = "INSERT INTO order_items (order_id, item_id, quantity) VALUES ('$total_rows', '$id', '$quantity')";
         $result = mysqli_query($conn, $sql);
     }
