@@ -46,7 +46,7 @@ $result_beverage = mysqli_query($conn, $sql_beverage);
                     <figcaption class="front-wording1"><?php echo $row_food['name'] ?></figure>
                 <div class="back">
                     <div class="back-wording">
-                        <h5 class="info-title"><?php echo $row_food['name']; ?></h5>
+                        <h5 class="info-title"><?php echo $row_food['name'] ." (RM ". $row_food['price'] .")"; ?></h5>
                         <p class="info"><?php echo $row_food['description']; ?></p>
                         <form action="cart_functions.php" method='POST'>
                             <input type='text' value="<?php echo $row_food['id']?>" name='id' hidden>

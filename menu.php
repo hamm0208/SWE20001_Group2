@@ -22,11 +22,11 @@
         <section class="card">
             <figure class="front1">
                 <img src="images/food_image/deluxecheeseburger.jpg" alt="Image 1">
-                <figcaption class="front-wording1">Food</figure>
+                <figcaption class="front-wording1">Ala-Carte</figure>
             <div class="back">
                 <div class="back-wording">
                     <h5 class="info-title">
-                        Food Menu
+                        Ala-Carte Menu
                         <br>
                         <br>
                         Delight in a culinary journey through our diverse menu offerings, each dish prepared with passion and precision to tantalize your taste buds. 
@@ -41,20 +41,20 @@
         </section>
         <section class="card">
             <figure class="front1">
-                <img src="images/food_image/freshfruitsmoothie.jpg" alt="Image 1">
-                <figcaption class="front-wording1">Beverage</figure>
+                <img src="images/web_resources/packages_logo.jpg" alt="Image 1">
+                <figcaption class="front-wording1">Packages</figure>
             <div class="back">
                 <div class="back-wording">
                     <h5 class="info-title">
-                        Beverage Menu
+                        Packages Menu
                         <br>
                         <br>
-                        Explore a tantalizing array of flavors on our beverage menu, crafted to quench every thirst and elevate every moment.
+                        Indulge in our enticing package menu, offering an array of delightful flavors meticulously curated to cater to every palate and enhance every occasion.
                         <br>
                         Have fun browsing!  
                         <br>
                         <br>
-                        <a href="food_beverage.php#beveragemenu" class="start-browsing-button">Start Browsing</a>
+                        <a href="packages.php" class="start-browsing-button">Start Browsing</a>
                     </h5>
                 </div>
             </div>

@@ -456,6 +456,7 @@ nav a:hover {
     font-weight: bold;
     font-size: 200%;
     color: #fff;
+    width: 100%;
     text-align: center;
 }
 
