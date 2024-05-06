@@ -80,11 +80,10 @@ $packages = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                         echo "Item details not found for item ID: {$item_id}";
                                     }
                                 }
-                            } else {
+                                } else {
                                 echo "No package items found.";
-                            }
+                                }
                             echo "</ol>";
-
                             ?>
                         <form action="cart_functions.php" method='POST'>
                             <input type='text' value="<?php echo $package['package_id']?>" name='id' hidden>
