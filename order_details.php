@@ -57,7 +57,7 @@
                     "itemName" => $row_inventory["name"],
                     "itemID" => $row_inventory["package_id"] ?? null,
                     "itemPrice" => $row_inventory["price"],
-                    "itemImgName" => $row_inventory["item_image_name"] ?? null,
+                    "itemImgName" => isset($row_inventory["item_image_name"]) ? $row_inventory["item_image_name"] : null,
                     "itemQty" => $item_qty
                 ];
             }
@@ -70,7 +70,7 @@
     color: black;
 }
 .order-details-wrapper{
-    height: 100%
+    margin-bottom: 50px;
 }
 .order-details-h1{
         color: #8E4324;
@@ -117,7 +117,7 @@
                             echo "<tr>";
                             echo "<td class='border border-dark'>";
                             echo "<p class='playfair-display order-item-name text-center my-0'>{$item['itemName']}</p>";
-                            if($item['itemID'][0] == "P"){
+                            if(isset($item['itemID']) && $item['itemID'][0] == "P") {
                                 $package_id = $item['itemID'];
                                 $sql_items = "SELECT * FROM package_items WHERE package_id='$package_id'";
                                 $result_items = mysqli_query($conn, $sql_items);
