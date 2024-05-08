@@ -813,3 +813,63 @@ li {
   transform: scale(0.95);
   transition-duration: .5s;
 }
+
+/* Payment Page Styles */
+/* Event Scheduling Form */
+.catering-form-wrapper {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    margin: 40px auto;
+}
+
+.catering-form-wrapper label {
+    display: block;
+    margin: 15px 0 5px;
+    color: #333; 
+}
+
+.catering-form-wrapper input[type="text"],
+.catering-form-wrapper input[type="tel"],
+.catering-form-wrapper input[type="email"],
+.catering-form-wrapper input[type="date"],
+.catering-form-wrapper input[type="time"],
+.catering-form-wrapper textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Button styling */
+.catering-form-wrapper .form-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px; 
+}
+
+.catering-form-wrapper .form-button:hover {
+    background-color: #45a049;
+}
+
+/* Styling for delivery options */
+.catering-form-wrapper .delivery-options label {
+    font-weight: bold;
+    display: inline-block; 
+    margin-right: 10px; 
+}
+
+.catering-form-wrapper #deliveryDetails,
+.catering-form-wrapper #pickUpDetails {
+    margin-top: 10px;
+    padding: 10px;
+    background: #EAE7DC;
+    border-radius: 5px;
+}
