@@ -163,32 +163,21 @@ if($_SESSION["email"] == ""){
     </div>
 </div>
 <script>
-    // Add an event listener to the button
-    document.getElementById("proceed_to_checkout_btn").addEventListener("click", function() {
-        // Check if the button is not disabled
-        if (!this.disabled) {
-            // Redirect to payment.php
-            window.location.href = "payment.php";
-        }else{
-            
-        }
-    })
     var button = document.getElementById("proceed_to_checkout_btn");
-    // Add an event listener to the button
-    document.getElementById("proceed_to_checkout_btn").addEventListener("click", function() {
-        // Check if the button is not disabled
-        if (!this.disabled) {
-            // Redirect to payment.php
-            element.classList.toggle("place_order_btn mt-3");
-
+    // Add an event listener to the button for the 'click' event
+    button.addEventListener("click", function(event) {
+        if (this.disabled) {
+            // Prevent default action if the button is disabled
+            event.preventDefault();
+            // Display an alert message
+            alert("Cart is empty");
+        } else {
+            // Redirect to payment.php if the cart is not empty
             window.location.href = "payment.php";
-        }else{
-            element.classList.toggle("place_order_btn1 mt-3");
-            
         }
     });
+
     function toggleClassBasedOnTotal(grandTotal) {
-        var button = document.getElementById("place_order_btn");
         if (grandTotal > 10) {
             button.classList.remove("place_order_btn1");
             button.classList.add("place_order_btn");
