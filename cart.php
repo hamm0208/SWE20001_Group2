@@ -173,15 +173,15 @@ if($_SESSION["email"] == ""){
             
         }
     })
-    var button = document.getElementById("place_order_btn");
+    var button = document.getElementById("proceed_to_checkout_btn");
     // Add an event listener to the button
-    document.getElementById("place_order_btn").addEventListener("click", function() {
+    document.getElementById("proceed_to_checkout_btn").addEventListener("click", function() {
         // Check if the button is not disabled
         if (!this.disabled) {
-            // Redirect to add_order.php
+            // Redirect to payment.php
             element.classList.toggle("place_order_btn mt-3");
 
-            window.location.href = "add_order.php";
+            window.location.href = "payment.php";
         }else{
             element.classList.toggle("place_order_btn1 mt-3");
             
