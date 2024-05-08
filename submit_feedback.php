@@ -11,7 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$name', '$eventType', '$foodRating', '$serviceRating', '$feedback')";
 
     if (mysqli_query($conn, $sql)) {
-        echo "Feedback submitted successfully";
+        echo '<script>alert("Feedback submitted successfully.");</script>'; 
+        echo '<script>window.location.href = "index.php";</script>'; 
+        exit(); 
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
