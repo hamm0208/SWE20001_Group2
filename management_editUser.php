@@ -135,7 +135,7 @@
             <div class="form-group col-12">
                 <div class="d-flex justify-content-end">
                     <a href="management_users.php" class="btn btn-danger mr-3">Cancel</a>
-                    <input type="submit" class="btn btn-primary mx-3" name="add_submit" value="Add Staff">
+                    <input type="submit" class="btn btn-primary mx-3" name="add_submit" value="Edit Staff">
                 </div>
             </div>
         </div>

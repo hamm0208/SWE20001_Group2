@@ -64,11 +64,11 @@ if(isset($_POST['edit_submit'])){
         
         }
         if($result){
-            echo '<script>alert("Item edit succesfully.");</script>';
+            echo '<script>alert("Package edit succesfully.");</script>';
             echo '<script>window.location.href = "management_packages.php";</script>';
             exit();
         }else{
-            echo '<script>alert("Item edit unsuccessfully.");</script>';
+            echo '<script>alert("Package edit unsuccessfully.");</script>';
             echo '<script>window.location.href = "management_packages.php";</script>';
             exit();
         }

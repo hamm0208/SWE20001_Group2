@@ -103,7 +103,7 @@
                              </select>
                             </div>
                             <div class="col">
-                                <label for="category" class='fira-sans-black'>Status:</label>
+                                <label for="category" class='fira-sans-black'>Category:</label>
                                 <select id="category" name="category" class="w-75">
                                     <option value="All" <?php echo ($_GET['category'] ?? '') === 'All' ? 'selected' : ''; ?>>All</option>
                                     <option value="Western" <?php echo ($_GET['category'] ?? '') === 'Western' ? 'selected' : ''; ?>>Western</option>
