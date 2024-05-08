@@ -83,7 +83,7 @@ if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
     exit();
 }else{
     echo "<script>alert('Your cart is empty, cannot proceed order.');</script>";
-    echo '<script>window.location.href = "menu.php";</script>';
+    echo '<script>window.location.href = "cart.php";</script>';
     exit();
 }
 
