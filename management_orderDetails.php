@@ -63,6 +63,10 @@
             echo '<script>window.location.href = "management_orders.php";</script>';
             exit();
         }
+    }else{
+        echo '<script>alert("Invalid ID");</script>';
+        echo '<script>window.location.href = "management_orders.php";</script>';
+        exit();
     }
 
     $sql = "SELECT * FROM order_items WHERE order_id = '$order_ID'";
