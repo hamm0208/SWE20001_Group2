@@ -224,7 +224,6 @@
                             <th>Deliver To: </th>
                         <?php endif; ?>
                         <th>Delivery Day</th>
-                        <th>Event Finish Time</th>
                         <th>Remarks</th>
                         <th>Status</th>
                         <th>Orde Date</th>
@@ -238,7 +237,6 @@
                             <td class="border border-dark"><?php echo $delivery_address ?></td>
                         <?php endif; ?>
                         <td class="border border-dark"><?php echo $event_date;?></td >
-                        <td class="border border-dark"><?php echo $event_start_time." - ".$event_end_time;?></td >
                         <td class="border border-dark"><?php echo $remarks;?></td >
                         <?php echo "<td class='p-3 border border-dark'> <span class='status-span p-2 $bg_color $text_color'>" . $status . "</span></td>"; ?>
                         <td class="border border-dark"><?php echo $order_date;?></td >
