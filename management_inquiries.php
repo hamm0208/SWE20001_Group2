@@ -34,6 +34,9 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+        .first-row-margin {
+            margin-left: 0.5%; 
+        }
     </style>
 </head>
 <body id="background">
@@ -61,37 +64,40 @@
         }
     ?>
 
-    <div class="container">
-        <h2>Inquiries</h2>
-        <?php
-            $sql = "SELECT * FROM inquiries";
-            $result = mysqli_query($conn, $sql);
-
-            if (mysqli_num_rows($result) > 0) {
-                echo "<table>";
-                echo "<tr><th>Inquiry ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Subject</th><th>Message</th><th>Created At</th><th>Resolved</th></tr>";
-                while($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>".$row["id"]."</td>";
-                    echo "<td>".$row["name"]."</td>";
-                    echo "<td>".$row["email"]."</td>";
-                    echo "<td>".$row["phone"]."</td>";
-                    echo "<td>".$row["subject"]."</td>";
-                    echo "<td>".$row["message"]."</td>";
-                    echo "<td>".$row["created_at"]."</td>";
-
-                    $resolved = isset($_POST['resolved']) && in_array($row['id'], $_POST['resolved']) ? "checked" : "";
-                    echo "<td><input type='checkbox' name='resolved[]' value='".$row["id"]."' $resolved onchange='updateResolvedState(this)'></td>";
-                    echo "</tr>";
-                }
-                echo "</table>";
-            } else {
-                echo "No inquiries found.";
-            }
-
-            // Close the database connection
-            mysqli_close($conn);
-        ?>
+    <div class="container-fluid">
+        <div class="row first-row-margin">
+            <?php include("management_navbar.php")?>
+            <div class="col-10 ">
+                <div class="container">
+                    <h2>Inquiries</h2>
+                        <?php
+                            $sql = "SELECT * FROM inquiries";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                echo "<table>";
+                            echo "<tr><th>Inquiry ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Subject</th><th>Message</th><th>Created At</th><th>Resolved</th></tr>";
+                            while($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr>";
+                                echo "<td>".$row["id"]."</td>";
+                                echo "<td>".$row["name"]."</td>";
+                                echo "<td>".$row["email"]."</td>";
+                                echo "<td>".$row["phone"]."</td>";
+                                echo "<td>".$row["subject"]."</td>";
+                                echo "<td>".$row["message"]."</td>";
+                                echo "<td>".$row["created_at"]."</td>";
+                                $resolved = isset($_POST['resolved']) && in_array($row['id'], $_POST['resolved']) ? "checked" : "";
+                                echo "<td><input type='checkbox' name='resolved[]' value='".$row["id"]."' $resolved onchange='updateResolvedState(this)'></td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                            } else {
+                                echo "No inquiries found.";
+                            }
+                            mysqli_close($conn);
+                        ?>
+                    </div>
+            </div>
+        </div> 
     </div>
 
     <script>
