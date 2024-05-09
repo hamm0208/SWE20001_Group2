@@ -88,13 +88,15 @@ $result_beverage = mysqli_query($conn, $sql_beverage);
     <title>Food & Beverage Menu</title>
     <style>
         .menu-sort-filter {
-            display: flex; 
-            justify-content: center; 
-            flex-wrap: wrap; 
-            text-align: left;
-            width: 100%; 
-            margin-bottom: 30px;
-            padding: 20px 0; 
+        display: flex; /* Enables flexbox layout */
+        justify-content: center; /* Centers items horizontally in the container */
+        align-items: start; /* Aligns items at the start vertically */
+        flex-wrap: wrap; /* Allows items to wrap if not enough space */
+        text-align: left;
+        width: 100%; /* Ensures the container takes up full width */
+        margin-left: 3.8%;
+        padding: 20px; /* Uniform padding for spacing */
+        box-sizing: border-box; /* Includes padding and border in the element's total width and height */
         }
 
         .menu-sort-filter form {
