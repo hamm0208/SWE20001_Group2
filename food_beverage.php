@@ -161,7 +161,6 @@ $result_beverage = mysqli_query($conn, $sql_beverage);
                 <option value="price_desc">Price (High-Low)</option>
             </select>
             <br>
-            <br>
             <label for="filterFoodPrice">Filter Food By Price:</label>
             <select name="filterFoodPrice" id="filterFoodPrice">
                 <option value="all">All</option>
@@ -181,7 +180,6 @@ $result_beverage = mysqli_query($conn, $sql_beverage);
                 <option value="price_asc">Price (Low-High)</option>
                 <option value="price_desc">Price (High-Low)</option>
             </select>
-            <br>
             <br>
             <label for="filterBeveragePrice">Filter Beverage By Price:</label>
             <select name="filterBeveragePrice" id="filterBeveragePrice">
