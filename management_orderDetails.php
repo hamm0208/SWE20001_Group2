@@ -77,7 +77,7 @@
         $contact_email = $row['contact_email'];
         $contact_number = $row['contact_number'];
         $event_date = $row['event_date'];
-        $delivery_type = $row['delivery_type'];
+        $delivery_type = $row['delivery_option'];
         $event_start_time = $row['event_start_time'];
         $event_end_time = $row['event_end_time'];
         $delivery_address = $row['delivery_address'];
