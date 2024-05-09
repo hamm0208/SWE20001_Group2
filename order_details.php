@@ -219,9 +219,11 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>Contact</th>
-                        <th>Deliver To: </th>
-                        <th>Delivery Day</th>
                         <th>Deliver By</th>
+                        <?php if ($delivery_type == "Delivery"): ?>
+                            <th>Deliver To: </th>
+                        <?php endif; ?>
+                        <th>Delivery Day</th>
                         <th>Event Finish Time</th>
                         <th>Remarks</th>
                         <th>Status</th>
@@ -231,9 +233,11 @@
                 <tbody>
                     <tr>
                         <td class="border border-dark"><?php echo $contact_email . " (". $contact_number. ")"?></td >
-                        <td class="border border-dark"><?php echo $delivery_address?></td >
-                        <td class="border border-dark"><?php echo $event_date;?></td >
                         <td class="border border-dark"><?php echo $delivery_type;?></td >
+                        <?php if ($delivery_type == "Delivery"): ?>
+                            <td class="border border-dark"><?php echo $delivery_address ?></td>
+                        <?php endif; ?>
+                        <td class="border border-dark"><?php echo $event_date;?></td >
                         <td class="border border-dark"><?php echo $event_start_time." - ".$event_end_time;?></td >
                         <td class="border border-dark"><?php echo $remarks;?></td >
                         <?php echo "<td class='p-3 border border-dark'> <span class='status-span p-2 $bg_color $text_color'>" . $status . "</span></td>"; ?>
