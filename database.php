@@ -123,6 +123,8 @@ $sql = "CREATE TABLE IF NOT EXISTS orders (
     event_date DATE NOT NULL,
     delivery_option VARCHAR(50) NOT NULL,
     delivery_address VARCHAR(255), -- This field should be optional based on the delivery option
+    delivery_time  VARCHAR(255),
+    pick_up_time  VARCHAR(255),
     special_remark TEXT,
     payment_method VARCHAR(50) NOT NULL,
     status VARCHAR(50) NOT NULL,
