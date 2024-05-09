@@ -139,6 +139,31 @@ $sql = "CREATE TABLE IF NOT EXISTS order_items (
 )";
 mysqli_query($conn, $sql);
 
+// Inquiries
+$sql = "CREATE TABLE IF NOT EXISTS inquiries (
+    inquiry_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    subject VARCHAR(255) NOT NULL,
+    custom_subject VARCHAR(255),
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+mysqli_query($conn, $sql);
+
+// Feedbacks
+$sql = "CREATE TABLE IF NOT EXISTS feedbacks (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    eventType VARCHAR(255) NOT NULL,
+    foodRating INT NOT NULL,
+    serviceRating INT NOT NULL,
+    feedback TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+mysqli_query($conn, $sql);
+
 
 //Packages
 $sql = "CREATE TABLE IF NOT EXISTS packages (

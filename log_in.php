@@ -37,8 +37,10 @@
                     $_SESSION['type'] = 'management';
                     header("Location: management_manageInventory.php");
                     exit(); 
-                }else if($user == 'opearation'){
-                    $_SESSION['type'] = 'opearation';
+                }else if($user == 'operation'){
+                    $_SESSION['type'] = 'operation';
+                    header("Location: operational_updateorderstatus.php");
+
                 }else{
                     $_SESSION['type'] = 'customer';
                     header("Location: index.php");

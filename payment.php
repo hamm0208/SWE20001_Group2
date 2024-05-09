@@ -1,6 +1,11 @@
 <?php
 session_start();
 include "database.php";
+if(!isset($_SESSION["cart_ids"]) || empty($_SESSION["cart_ids"])){
+    echo "<script>alert('Your cart is empty, cannot proceed order.');</script>";
+    echo '<script>window.location.href = "cart.php";</script>';
+    exit();
+}
 if (!isset($_SESSION['email'])) {
     $_SESSION["email"] = "";
 }

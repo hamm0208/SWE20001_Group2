@@ -1,25 +1,21 @@
 <?php
+// Include necessary files for database connection
 include("database.php");
 include("connection.php");
 
-$sql = "SELECT user_email, contact_number, status
-        FROM orders
-        WHERE status IN ('Cancelled', 'In Progress', 'Complete')";
+// Retrieve parameters from the AJAX request
+$value = $_GET['value'];
+$id = $_GET['id'];
 
-$result = mysqli_query($conn, $sql);
+// Update the orders table
+$sql = "UPDATE orders SET status='$value' WHERE id=$id";
 
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<td>" . $row['user_email'] . "</td>";
-        echo "<td>" . $row['contact_number'] . "</td>";
-        echo "<td>" . $row['status'] . "</td>";
-        // You can add more columns or data here if needed
-        echo "</tr>";
-    }
+if (mysqli_query($conn, $sql)) {
+    echo "Status updated successfully";
 } else {
-    echo "<tr><td colspan='3'>No orders found.</td></tr>";
+    echo "Error updating status: " . mysqli_error($conn);
 }
 
+// Close the database connection
 mysqli_close($conn);
 ?>

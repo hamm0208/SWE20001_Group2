@@ -156,7 +156,7 @@ if($_SESSION["email"] == ""){
             <tr>
                 <td colspan="3" class="text-right align-middle h2"></td>
                 <td class="text-right">
-                <button type='submit' id="proceed_checkout_btn" class="place_order_btn mt-3" <?php echo ($grand_total == 10) ? 'disabled' : ''; ?>>Proceed To Checkout</button>
+                <button type='submit' id="place_order_btn" class="place_order_btn mt-3" <?php echo ($grand_total == 10) ? 'disabled' : ''; ?>>Checkout</button>
                 </td>
                 
             </tr>
@@ -165,7 +165,7 @@ if($_SESSION["email"] == ""){
 </div>
 <script>
     // Add an event listener to the button
-    document.getElementById("proceed_checkout_btn").addEventListener("click", function() {
+    document.getElementById("place_order_btn").addEventListener("click", function() {
         // Check if the button is not disabled
         if (!this.disabled) {
             // Redirect to add_order.php
@@ -174,9 +174,9 @@ if($_SESSION["email"] == ""){
             
         }
     })
-    var button = document.getElementById("proceed_checkout_btn");
+    var button = document.getElementById("place_order_btn");
     // Add an event listener to the button
-    document.getElementById("proceed_checkout_btn").addEventListener("click", function() {
+    document.getElementById("place_order_btn").addEventListener("click", function() {
         // Check if the button is not disabled
         if (!this.disabled) {
             // Redirect to add_order.php
@@ -189,7 +189,7 @@ if($_SESSION["email"] == ""){
         }
     });
     function toggleClassBasedOnTotal(grandTotal) {
-        var button = document.getElementById("proceed_checkout_btn");
+        var button = document.getElementById("place_order_btn");
         if (grandTotal > 10) {
             button.classList.remove("place_order_btn1");
             button.classList.add("place_order_btn");

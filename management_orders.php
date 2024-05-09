@@ -231,7 +231,6 @@
                                     $orderID = $row['id'];
                                     $orderEmail = $row['user_email'];
                                     $orderDate = $row['order_date'];
-                                    $orderStatus = $row['status'];
                                     $orderTotal = $row['total'];
                                     echo "<tr>";
                                     echo "<td class='p-3 text-center align-middle'>", $orderID, "</td>";
