@@ -1,5 +1,6 @@
 <?php
-session_start();
+include 'header.php';
+
 include "database.php";
 if(!isset($_SESSION["cart_ids"]) || empty($_SESSION["cart_ids"])){
     echo "<script>alert('Your cart is empty, cannot proceed order.');</script>";
@@ -41,7 +42,6 @@ if (!isset($_SESSION['cart_ids'])) {
 </style>
 </head>
 <body style="background: url('Images/web_resources/background.jpg') no-repeat center center fixed; background-size: cover;">
-<?php include 'header.php'; ?>
 
 
     <div class="catering-form-wrapper">
