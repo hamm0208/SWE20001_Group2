@@ -69,6 +69,42 @@
         exit();
     }
 
+    $sql_order_details = "SELECT * FROM orders WHERE id = '$order_ID'";
+    $result_order_details = mysqli_query($conn, $sql_order_details);
+    if (mysqli_num_rows($result_order_details) > 0) {
+        $row = mysqli_fetch_array($result_order_details);
+        $user_email = $row['user_email'];
+        $contact_email = $row['contact_email'];
+        $contact_number = $row['contact_number'];
+        $event_date = $row['event_date'];
+        $delivery_type = $row['delivery_type'];
+        $event_start_time = $row['event_start_time'];
+        $event_end_time = $row['event_end_time'];
+        $delivery_address = $row['delivery_address'];
+        $remarks = $row['remarks'];
+        $status = $row['status'];
+        $total = $row['total'];
+        $order_date = $row['order_date'];
+        $bg_color = '';
+            $text_color = '';
+            switch ($status) {
+                case 'In Progress':
+                    $bg_color = 'bg-warning';
+                    $text_color = 'text-dark';
+                    break;
+                case 'Cancelled':
+                    $bg_color = 'bg-danger';
+                    $text_color = 'text-white';
+                    break;
+                case 'Complete':
+                    $bg_color = 'bg-success';
+                    $text_color = 'text-white';
+                    break;
+                default:
+                    $bg_color = '';
+                    $text_color = '';
+            }
+    }
     $sql = "SELECT * FROM order_items WHERE order_id = '$order_ID'";
     $result = mysqli_query($conn, $sql);
 
@@ -193,6 +229,33 @@
                                 <td colspan="3" class="text-right align-middle h3"><strong>Total:</strong></td>
                                 <td><span class="grand-total-amount h2">RM<?php echo $grand_total+10; ; ?></span></td>
                             </tr>
+                        </table>
+                        <h2 class="order-details-h1">Delivery Information</h2>
+                        <table class="table text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="bg-dark text-light">Contact</th>
+                                    <th class="bg-dark text-light">Deliver To: </th>
+                                    <th class="bg-dark text-light">Delivery Day</th>
+                                    <th class="bg-dark text-light">Deliver By</th>
+                                    <th class="bg-dark text-light">Event Finish Time</th>
+                                    <th class="bg-dark text-light">Remarks</th>
+                                    <th class="bg-dark text-light">Status</th>
+                                    <th class="bg-dark text-light">Orde Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-dark"><?php echo $contact_email . " (". $contact_number. ")"?></td >
+                                    <td class="border border-dark"><?php echo $delivery_address?></td >
+                                    <td class="border border-dark"><?php echo $event_date;?></td >
+                                    <td class="border border-dark"><?php echo $delivery_type;?></td >
+                                    <td class="border border-dark"><?php echo $event_start_time." - ".$event_end_time;?></td >
+                                    <td class="border border-dark"><?php echo $remarks;?></td >
+                                    <?php echo "<td class='p-3 border border-dark'> <span class='status-span p-2 $bg_color $text_color'>" . $status . "</span></td>"; ?>
+                                    <td class="border border-dark"><?php echo $order_date;?></td >
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
