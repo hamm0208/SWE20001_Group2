@@ -88,7 +88,7 @@ if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
     }
     $_SESSION["cart_ids"] = [];
     echo "<script>alert('Your Order ID is: " . $total_rows . ". Order placed succesfully! You can view your order in the order tab.');</script>";
-    echo '<script>window.location.href = "menu.php";</script>';
+    echo '<script>window.location.href = "feedbackform.php";</script>';
     exit();
 }else{
     echo "<script>alert('Your cart is empty, cannot proceed order.');</script>";

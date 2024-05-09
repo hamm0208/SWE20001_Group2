@@ -496,6 +496,57 @@ nav a:hover {
     color: #8E3E1B;
 }
 
+/* Sorting and Filtering Forms for Menu Page */
+.container1 .menu-sort-filter {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px; /* Provides space between forms and the content */
+}
+
+.container1 .menu-sort-filter form {
+    display: inline-block;
+    margin: 0 20px;
+    background-color: #e98074; /* Similar to the back of the cards */
+    padding: 20px;
+    border-radius: 28px; /* Matches card radius */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container1 .menu-sort-filter label {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 18px;
+    color: #fff; /* White text for visibility */
+    margin-right: 10px;
+}
+
+.container1 .menu-sort-filter select {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none; /* Removes default border */
+    background-color: #d8c3a5; /* Light background for contrast */
+    color: #8E3E1B; /* Text color to match category titles */
+    margin-right: 10px;
+}
+
+.container1 .menu-sort-filter button {
+    background-color: #8E3E1B; /* Dark brown color similar to category */
+    color: #fff; /* White text */
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none; /* Removes default border */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container1 .menu-sort-filter button:hover {
+    background-color: #e85a4f; /* Hover color change to light red */
+    color: #d8c3a5; /* Light background color for text on hover */
+}
+
 /* Footer */
 .ft-row {
     display: flex;

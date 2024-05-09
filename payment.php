@@ -45,7 +45,7 @@ if (!isset($_SESSION['cart_ids'])) {
 
 
     <div class="catering-form-wrapper">
-        <form id="cateringEventForm" action="feedbackform.php" method="post">
+        <form id="cateringEventForm" action="add_order.php" method="post">
             <h2>Catering Event Scheduling Form</h2>
 
             <br>
