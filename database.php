@@ -117,14 +117,14 @@ if ($count == 0) {
 $sql = "CREATE TABLE IF NOT EXISTS orders (
     id INT(4) AUTO_INCREMENT PRIMARY KEY NOT NULL,
     user_email VARCHAR(50) NOT NULL,
-    contact_email VARCHAR(50) NOT NULL, -- Added contact email
-    contact_number VARCHAR(20) NOT NULL, -- Added contact number
-    event_date DATE NOT NULL, -- Added event date
-    delivery_type VARCHAR(50) NOT NULL, -- Added delivery type
-    event_start_time TIME NOT NULL, -- Added event start time
-    event_end_time TIME NOT NULL, -- Added event end time
-    delivery_address VARCHAR(100) NOT NULL, -- Added delivery address
-    remarks TEXT, -- Added remarks
+    receiver_name VARCHAR(100) NOT NULL,
+    receiver_email VARCHAR(50) NOT NULL,
+    receiver_contact_number VARCHAR(20) NOT NULL,
+    event_date DATE NOT NULL,
+    delivery_option VARCHAR(50) NOT NULL,
+    delivery_address VARCHAR(255), -- This field should be optional based on the delivery option
+    special_remark TEXT,
+    payment_method VARCHAR(50) NOT NULL,
     status VARCHAR(50) NOT NULL,
     total INT(4) NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
