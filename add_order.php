@@ -16,12 +16,23 @@ if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
         $grand_total+= ($item["itemPrice"] * $item['itemQty']);
     }
     
+    $receiverName = $_POST['receiverName'];
+    $contactNumber = $_POST['contactNumber']; 
+    $receiverEmail = $_POST['email']; 
+    $eventDate = $_POST['eventDate']; 
+    $deliveryOption = $_POST['deliveryOption']; 
+    $deliveryAddress = $_POST['deliveryAddress']; 
+    $deliveryTime = $_POST['deliveryTime']; 
+    $pickUpTime = $_POST['pickUpTime']; 
+    $specialRemark = $_POST['specialRemark']; 
+    $paymentMethod = $_POST['paymentMethod']; 
+
     //Inserting orders
     $sql = "INSERT INTO orders SET 
             user_email = '$email', 
             receiver_name = '$receiverName', 
-            contact_number = '$contactNumber', 
             receiver_email = '$receiverEmail', 
+            receiver_contact_number = '$contactNumber', 
             event_date = '$eventDate', 
             delivery_option = '$deliveryOption', 
             delivery_address = '$deliveryAddress', 
@@ -31,6 +42,7 @@ if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
             payment_method = '$paymentMethod', 
             status = 'In Progress', 
             total = $grand_total";
+
     $result = mysqli_query($conn, $sql);
 
     //Find the latest order id
@@ -79,16 +91,12 @@ if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
                     ";
             $result = mysqli_query($conn, $sql);
         }
-
-        echo $total_rows;
-        echo $id;
-        echo $quantity;
         $sql = "INSERT INTO order_items (order_id, item_id, quantity) VALUES ('$total_rows', '$id', '$quantity')";
         $result = mysqli_query($conn, $sql);
     }
     $_SESSION["cart_ids"] = [];
     echo "<script>alert('Your Order ID is: " . $total_rows . ". Order placed succesfully! You can view your order in the order tab.');</script>";
-    echo '<script>window.location.href = "menu.php";</script>';
+    echo '<script>window.location.href = "feedbackform.php";</script>';
     exit();
 }else{
     echo "<script>alert('Your cart is empty, cannot proceed order.');</script>";
