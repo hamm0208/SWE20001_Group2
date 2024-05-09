@@ -816,18 +816,28 @@ li {
 
 /* Payment Page Styles */
 /* Event Scheduling Form */
+
 .catering-form-wrapper {
-    background: #f7f7f7;
+    background: white;
     padding: 20px;
     border-radius: 8px;
-    width: 300px;
+    width: 60%;
     margin: 40px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    font-family: 'Fira Sans', sans-serif; 
 }
 
-.catering-form-wrapper label {
-    display: block;
-    margin: 15px 0 5px;
-    color: #333; 
+.catering-form-wrapper h2 {
+    font-family: 'Playfair Display', serif; 
+    color: #8E3E1B;
+}
+
+.catering-form-wrapper label,
+.catering-form-wrapper input,
+.catering-form-wrapper textarea,
+.catering-form-wrapper button {
+    font-family: 'Fira Sans', sans-serif; 
 }
 
 .catering-form-wrapper input[type="text"],
@@ -841,29 +851,62 @@ li {
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    background-color: #8e8d8a;
+    color: white;
 }
 
 /* Button styling */
 .catering-form-wrapper .form-button {
-    background-color: #4CAF50;
+    background-color: #8E3E1B;
     color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    margin-top: 15px; 
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
 }
 
-.catering-form-wrapper .form-button:hover {
-    background-color: #45a049;
+.catering-form-wrapper .form-button:hover,
+.catering-form-wrapper .form-button:focus {
+    background-color: #e98074;
+    outline: none;
 }
 
-/* Styling for delivery options */
+/* Styling for payment method selection (horizontal layout) */
+.catering-form-wrapper .payment-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.catering-form-wrapper .payment-details {
+    display: none;
+    padding: 10px;
+    background: #EAE7DC;
+    border-radius: 5px;
+}
+
+.catering-form-wrapper .payment-details.visible {
+    display: block;
+}
+
+/* Payment images styling */
+.payment-image {
+    width: 100%; /* Full width of the container */
+    max-width: 200px; /* Controls the maximum width */
+    height: auto; /* Maintains aspect ratio */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Delivery options styling */
 .catering-form-wrapper .delivery-options label {
     font-weight: bold;
-    display: inline-block; 
-    margin-right: 10px; 
+    display: inline-block;
+    margin-right: 10px;
 }
 
 .catering-form-wrapper #deliveryDetails,

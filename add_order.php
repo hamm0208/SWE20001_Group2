@@ -17,10 +17,19 @@ if(isset($_SESSION["cart_ids"]) && !empty($_SESSION["cart_ids"])){
     }
     
     //Inserting orders
-    $sql = "INSERT INTO orders
-            SET
-            user_email = '$email',
-            status = 'In Progress',
+    $sql = "INSERT INTO orders SET 
+            user_email = '$email', 
+            receiver_name = '$receiverName', 
+            contact_number = '$contactNumber', 
+            receiver_email = '$receiverEmail', 
+            event_date = '$eventDate', 
+            delivery_option = '$deliveryOption', 
+            delivery_address = '$deliveryAddress', 
+            delivery_time = '$deliveryTime', 
+            pick_up_time = '$pickUpTime', 
+            special_remark = '$specialRemark', 
+            payment_method = '$paymentMethod', 
+            status = 'In Progress', 
             total = $grand_total";
     $result = mysqli_query($conn, $sql);
 
