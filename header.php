@@ -37,6 +37,7 @@ if(!isset($_SESSION['cart_ids'])){
                     </li>
                     <li><a href="orders.php">ORDERS</a></li>
                     <li><a href="aboutus.php">ABOUT US</a></li>
+                    <li><a href="reviewshowcase.php">REVIEWS</a></li>
                     <?php
                     if(isset($_SESSION['email'])){
                         if($_SESSION['email'] == ""){
