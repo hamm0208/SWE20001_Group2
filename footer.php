@@ -22,6 +22,7 @@
                     <h2>Others</h2>
                     <div class="ft-main-links">
                         <li><a href="aboutus.php">About Us</a></li>
+                        <li><a href="inquiryform.php">Inquiry</a></li>
                     </div>
                 </div>
             </div>
