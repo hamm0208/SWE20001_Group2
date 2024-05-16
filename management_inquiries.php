@@ -78,7 +78,7 @@
                             echo "<tr><th>Inquiry ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Subject</th><th>Message</th><th>Created At</th><th>Resolved</th></tr>";
                             while($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
-                                echo "<td>".$row["id"]."</td>";
+                                echo "<td>".$row["inquiry_id"]."</td>";
                                 echo "<td>".$row["name"]."</td>";
                                 echo "<td>".$row["email"]."</td>";
                                 echo "<td>".$row["phone"]."</td>";
@@ -86,7 +86,7 @@
                                 echo "<td>".$row["message"]."</td>";
                                 echo "<td>".$row["created_at"]."</td>";
                                 $resolved = isset($_POST['resolved']) && in_array($row['id'], $_POST['resolved']) ? "checked" : "";
-                                echo "<td><input type='checkbox' name='resolved[]' value='".$row["id"]."' $resolved onchange='updateResolvedState(this)'></td>";
+                                echo "<td><input type='checkbox' name='resolved[]' value='".$row["inquiry_id"]."' $resolved onchange='updateResolvedState(this)'></td>";
                                 echo "</tr>";
                             }
                             echo "</table>";
