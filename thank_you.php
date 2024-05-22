@@ -40,7 +40,7 @@
             <h2>Thank You!</h2>
             <p>Your inquiry has been received and is being processed. Our team will carefully review your message and reach out to you shortly via email.</p>
         </div>
-        <a href="index.php" class="back-to-home-button">Back to Home Page</a>
+        <a href="" class="back-to-home-button">Back to Home Page</a>
     </div>
 </body>
 </html>
