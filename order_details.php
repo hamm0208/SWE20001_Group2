@@ -41,14 +41,15 @@
     if (mysqli_num_rows($result_order_details) > 0) {
         $row = mysqli_fetch_array($result_order_details);
         $user_email = $row['user_email'];
-        $contact_email = $row['contact_email'];
-        $contact_number = $row['contact_number'];
+        $contact_email = $row['receiver_email'];
+        $contact_number = $row['receiver_contact_number'];
         $event_date = $row['event_date'];
+        $delivery_time = $row['delivery_time'];
+        $payment = $row['payment_method'];
+        $pickup_time = $row['pick_up_time'];
         $delivery_type = $row['delivery_option'];
-        $event_start_time = $row['event_start_time'];
-        $event_end_time = $row['event_end_time'];
         $delivery_address = $row['delivery_address'];
-        $remarks = $row['remarks'];
+        $remarks = $row['special_remark'];
         $status = $row['status'];
         $total = $row['total'];
         $order_date = $row['order_date'];
@@ -220,25 +221,37 @@
                     <tr>
                         <th>Contact</th>
                         <th>Deliver By</th>
-                        <?php if ($delivery_type == "Delivery"): ?>
-                            <th>Deliver To: </th>
-                        <?php endif; ?>
-                        <th>Delivery Day</th>
+                        <?php
+                            if ($delivery_type == "Delivery"){
+                                echo "<th>Delivery Day</th>";                           
+                                echo "<th>Delivery Time</th>";                           
+                                echo "<th>Delivery Address</th>";                           
+                            }else{
+                                echo "<th>Pickup Day</th>";                           
+                                echo "<th>Pickup Time</th>";                           
+                            }
+                        ?>
                         <th>Remarks</th>
                         <th>Status</th>
-                        <th>Orde Date</th>
+                        <th>Order Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="border border-dark"><?php echo $contact_email . " (". $contact_number. ")"?></td >
                         <td class="border border-dark"><?php echo $delivery_type;?></td >
-                        <?php if ($delivery_type == "Delivery"): ?>
-                            <td class="border border-dark"><?php echo $delivery_address ?></td>
-                        <?php endif; ?>
                         <td class="border border-dark"><?php echo $event_date;?></td >
+                        <?php
+                            if ($delivery_type == "Delivery"){
+                                echo "<td class='border border-dark'>".$delivery_time."</td>";                       
+                                echo "<td class='border border-dark'>".$delivery_address."</td>";                       
+                            }else{        
+                                echo "<td class='border border-dark'>".$pickup_time."</td>";                       
+
+                            }
+                        ?>
                         <td class="border border-dark"><?php echo $remarks;?></td >
-                        <?php echo "<td class='p-3 border border-dark'> <span class='status-span p-2 $bg_color $text_color'>" . $status . "</span></td>"; ?>
+                        <?php echo "<td class='p-3 border border-dark w-25'> <span class='status-span p-2 $bg_color $text_color'>" . $status . "</span></td>"; ?>
                         <td class="border border-dark"><?php echo $order_date;?></td >
                     </tr>
                 </tbody>

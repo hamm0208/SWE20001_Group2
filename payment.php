@@ -45,7 +45,7 @@ if (!isset($_SESSION['cart_ids'])) {
 
 
     <div class="catering-form-wrapper">
-        <form id="cateringEventForm" action="feedbackform.php" method="post">
+        <form id="cateringEventForm" action="add_order.php" method="post">
             <h2>Catering Event Scheduling Form</h2>
 
             <br>
@@ -133,20 +133,59 @@ if (!isset($_SESSION['cart_ids'])) {
 
             <br>
 
-            <button type="submit" class="form-button">Checkout</button>
+            <button type="button" class="form-button" onclick="validateForm()">Checkout</button>
         </form>
     </div>
 
-<script>
-function toggleDelivery(isDelivery) {
-    document.getElementById('deliveryDetails').style.display = isDelivery ? 'block' : 'none';
-    document.getElementById('pickUpDetails').style.display = isDelivery ? 'none' : 'block';
-}
+    <script>
+        function validateForm() {
+            var bankTransfer = document.getElementById('bankTransfer').checked;
+            var duitNowQR = document.getElementById('duitNowQR').checked;
+            if (!bankTransfer && !duitNowQR) {
+                alert("Please select a payment method.");
+                return false;
+            }
 
-function togglePaymentMethod(paymentType) {
-    document.getElementById('bankDetails').style.display = paymentType === 'bank' ? 'block' : 'none';
-    document.getElementById('duitNowQRDetails').style.display = paymentType === 'qr' ? 'block' : 'none';
-}
+            var delivery = document.getElementById('delivery').checked;
+            var pickUp = document.getElementById('pickUp').checked;
+            if (!delivery && !pickUp) {
+                alert("Please select a delivery option.");
+                return false;
+            }
+
+            if (delivery) {
+                var deliveryAddress = document.getElementById('deliveryAddress').value.trim();
+                var deliveryTime = document.getElementById('deliveryTime').value.trim();
+                if (deliveryAddress === "") {
+                    alert("Please enter the delivery address.");
+                    return false;
+                }
+                if (deliveryTime === "") {
+                    alert("Please enter the delivery time.");
+                    return false;
+                }
+            }
+
+            if (pickUp) {
+                var pickUpTime = document.getElementById('pickUpTime').value.trim();
+                if (pickUpTime === "") {
+                    alert("Please enter the pick up time.");
+                    return false;
+                }
+            }
+
+            document.getElementById('cateringEventForm').submit();
+        }
+
+        function toggleDelivery(isDelivery) {
+            document.getElementById('deliveryDetails').style.display = isDelivery ? 'block' : 'none';
+            document.getElementById('pickUpDetails').style.display = isDelivery ? 'none' : 'block';
+        }
+
+        function togglePaymentMethod(paymentType) {
+            document.getElementById('bankDetails').style.display = paymentType === 'bank' ? 'block' : 'none';
+            document.getElementById('duitNowQRDetails').style.display = paymentType === 'qr' ? 'block' : 'none';
+        }
 </script>
 
 <?php include 'footer.php'; ?>

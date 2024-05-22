@@ -74,14 +74,15 @@
     if (mysqli_num_rows($result_order_details) > 0) {
         $row = mysqli_fetch_array($result_order_details);
         $user_email = $row['user_email'];
-        $contact_email = $row['contact_email'];
-        $contact_number = $row['contact_number'];
+        $contact_email = $row['receiver_email'];
+        $contact_number = $row['receiver_contact_number'];
         $event_date = $row['event_date'];
+        $delivery_time = $row['delivery_time'];
+        $payment = $row['payment_method'];
+        $pickup_time = $row['pick_up_time'];
         $delivery_type = $row['delivery_option'];
-        $event_start_time = $row['event_start_time'];
-        $event_end_time = $row['event_end_time'];
         $delivery_address = $row['delivery_address'];
-        $remarks = $row['remarks'];
+        $remarks = $row['special_remark'];
         $status = $row['status'];
         $total = $row['total'];
         $order_date = $row['order_date'];
@@ -231,32 +232,46 @@
                             </tr>
                         </table>
                         <h2 class="order-details-h1">Delivery Information</h2>
-                        <table class="table text-center">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th class="bg-dark text-light">Contact</th>
-                                    <th class="bg-dark text-light">Deliver To: </th>
-                                    <th class="bg-dark text-light">Delivery Day</th>
-                                    <th class="bg-dark text-light">Deliver By</th>
-                                    <th class="bg-dark text-light">Event Finish Time</th>
-                                    <th class="bg-dark text-light">Remarks</th>
-                                    <th class="bg-dark text-light">Status</th>
-                                    <th class="bg-dark text-light">Orde Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="border border-dark"><?php echo $contact_email . " (". $contact_number. ")"?></td >
-                                    <td class="border border-dark"><?php echo $delivery_address?></td >
-                                    <td class="border border-dark"><?php echo $event_date;?></td >
-                                    <td class="border border-dark"><?php echo $delivery_type;?></td >
-                                    <td class="border border-dark"><?php echo $event_start_time." - ".$event_end_time;?></td >
-                                    <td class="border border-dark"><?php echo $remarks;?></td >
-                                    <?php echo "<td class='p-3 border border-dark'> <span class='status-span p-2 $bg_color $text_color'>" . $status . "</span></td>"; ?>
-                                    <td class="border border-dark"><?php echo $order_date;?></td >
-                                </tr>
-                            </tbody>
-                        </table>
+            <table class="table text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class='bg-dark text-light'>Contact</th>
+                        <th class='bg-dark text-light'>Deliver By</th>
+                        <?php
+                            if ($delivery_type == "Delivery"){
+                                echo "<th class='bg-dark text-light'>Delivery Day</th>";                           
+                                echo "<th class='bg-dark text-light'>Delivery Time</th>";                           
+                                echo "<th class='bg-dark text-light'>Delivery Address</th>";                           
+                            }else{
+                                echo "<th class='bg-dark text-light'>Pickup Day</th>";                           
+                                echo "<th class='bg-dark text-light'>Pickup Time</th>";                           
+                            }
+                        ?>
+                        <th class='bg-dark text-light'>Remarks</th>
+                        <th class='bg-dark text-light'>Status</th>
+                        <th class='bg-dark text-light'>Order Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-dark"><?php echo $contact_email . " (". $contact_number. ")"?></td >
+                        <td class="border border-dark"><?php echo $delivery_type;?></td >
+                        <td class="border border-dark"><?php echo $event_date;?></td >
+                        <?php
+                            if ($delivery_type == "Delivery"){
+                                echo "<td class='border border-dark'>".$delivery_time."</td>";                       
+                                echo "<td class='border border-dark'>".$delivery_address."</td>";                       
+                            }else{        
+                                echo "<td class='border border-dark'>".$pickup_time."</td>";                       
+
+                            }
+                        ?>
+                        <td class="border border-dark"><?php echo $remarks;?></td >
+                        <?php echo "<td class='p-3 border border-dark w-25'> <span class='status-span p-2 $bg_color $text_color'>" . $status . "</span></td>"; ?>
+                        <td class="border border-dark"><?php echo $order_date;?></td >
+                    </tr>
+                </tbody>
+            </table>
                     </div>
                 </div>
             </div>

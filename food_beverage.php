@@ -9,6 +9,66 @@ $result_food = mysqli_query($conn, $sql_food);
 // Fetch beverage items from the database
 $sql_beverage = "SELECT * FROM inventory WHERE type='Beverage'";
 $result_beverage = mysqli_query($conn, $sql_beverage);
+
+// Handle sorting and filtering for Food
+$sortFood = $_GET['sortFood'] ?? 'name_asc';
+$filterFoodPrice = $_GET['filterFoodPrice'] ?? 'all';
+
+// Build SQL query for food
+$sql_food = "SELECT * FROM inventory WHERE type='Food'";
+if ($filterFoodPrice == 'under10') {
+    $sql_food .= " AND price < 10";
+} elseif ($filterFoodPrice == 'above10') {
+    $sql_food .= " AND price >= 10";
+}
+
+// Apply sorting for Food
+switch ($sortFood) {
+    case 'name_asc':
+        $sql_food .= " ORDER BY name ASC";
+        break;
+    case 'name_desc':
+        $sql_food .= " ORDER BY name DESC";
+        break;
+    case 'price_asc':
+        $sql_food .= " ORDER BY price ASC";
+        break;
+    case 'price_desc':
+        $sql_food .= " ORDER BY price DESC";
+        break;
+}
+
+// Handle sorting and filtering for Beverage
+$sortBeverage = $_GET['sortBeverage'] ?? 'name_asc';
+$filterBeveragePrice = $_GET['filterBeveragePrice'] ?? 'all';
+
+// Build SQL query for beverage
+$sql_beverage = "SELECT * FROM inventory WHERE type='Beverage'";
+if ($filterBeveragePrice == 'under10') {
+    $sql_beverage .= " AND price < 10";
+} elseif ($filterBeveragePrice == 'above10') {
+    $sql_beverage .= " AND price >= 10";
+}
+
+// Apply sorting for Beverage
+switch ($sortBeverage) {
+    case 'name_asc':
+        $sql_beverage .= " ORDER BY name ASC";
+        break;
+    case 'name_desc':
+        $sql_beverage .= " ORDER BY name DESC";
+        break;
+    case 'price_asc':
+        $sql_beverage .= " ORDER BY price ASC";
+        break;
+    case 'price_desc':
+        $sql_beverage .= " ORDER BY price DESC";
+        break;
+}
+
+$result_food = mysqli_query($conn, $sql_food);
+$result_beverage = mysqli_query($conn, $sql_beverage);
+
 ?>
 
 <!DOCTYPE html>
@@ -26,15 +86,113 @@ $result_beverage = mysqli_query($conn, $sql_beverage);
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
     <title>Food & Beverage Menu</title>
+    <style>
+        .menu-sort-filter {
+        display: flex; /* Enables flexbox layout */
+        justify-content: center; /* Centers items horizontally in the container */
+        align-items: start; /* Aligns items at the start vertically */
+        flex-wrap: wrap; /* Allows items to wrap if not enough space */
+        text-align: left;
+        width: 100%; /* Ensures the container takes up full width */
+        margin-left: 3.8%;
+        padding: 20px; /* Uniform padding for spacing */
+        box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+        }
+
+        .menu-sort-filter form {
+            width: 300px; 
+            display: flex; 
+            flex-direction: column; 
+            margin-right: 20px; 
+            margin-bottom: 20px; 
+            background-color: #e98074;
+            padding: 20px;
+            border-radius: 28px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-sort-filter label {
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 10px; 
+        }
+
+        .menu-sort-filter select,
+        .menu-sort-filter button {
+            font-family: 'Fira Sans', sans-serif;
+            width: 100%; 
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 10px; 
+        }
+
+        .menu-sort-filter select {
+            background-color: #d8c3a5;
+            color: #8E3E1B;
+        }
+
+        .menu-sort-filter button {
+            background-color: #8E3E1B;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .menu-sort-filter button:hover {
+            background-color: #e85a4f;
+            color: #d8c3a5;
+        }
+    </style>
 </head>
 
 <body>
-<?php include 'header.php'; 
-
-
-?>
+<?php include 'header.php'; ?>
 
 <section class="container1">
+    <br>
+    <div class="menu-sort-filter">
+        <!-- Sorting and Filtering for Food -->
+        <form action="food_beverage.php" method="get">
+            <label for="sortFood">Sort Food By:</label>
+            <select name="sortFood" id="sortFood">
+                <option value="name_asc">Name (A-Z)</option>
+                <option value="name_desc">Name (Z-A)</option>
+                <option value="price_asc">Price (Low-High)</option>
+                <option value="price_desc">Price (High-Low)</option>
+            </select>
+            <br>
+            <label for="filterFoodPrice">Filter Food By Price:</label>
+            <select name="filterFoodPrice" id="filterFoodPrice">
+                <option value="all">All</option>
+                <option value="under10">Under RM10</option>
+                <option value="above10">Above RM10</option>
+            </select>
+            <button type="submit">Apply</button>
+        </form>
+        <br>
+        <br>
+        <!-- Sorting and Filtering for Beverages -->
+        <form action="food_beverage.php" method="get">
+            <label for="sortBeverage">Sort Beverage By:</label>
+            <select name="sortBeverage" id="sortBeverage">
+                <option value="name_asc">Name (A-Z)</option>
+                <option value="name_desc">Name (Z-A)</option>
+                <option value="price_asc">Price (Low-High)</option>
+                <option value="price_desc">Price (High-Low)</option>
+            </select>
+            <br>
+            <label for="filterBeveragePrice">Filter Beverage By Price:</label>
+            <select name="filterBeveragePrice" id="filterBeveragePrice">
+                <option value="all">All</option>
+                <option value="under10">Under RM10</option>
+                <option value="above10">Above RM10</option>
+            </select>
+            <button type="submit">Apply</button>
+        </form>
+    </div>
+
     <div>
         <h1 class="category" id="foodmenu">FOOD MENU<span class="menu"></span></h1>
     </div>

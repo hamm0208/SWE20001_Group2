@@ -138,7 +138,7 @@
         $currentPage = isset($_GET['page']) ? $_GET['page'] : 1; 
         $offset = ($currentPage - 1) * $limit; 
 
-        $sql = "SELECT name, eventType, foodRating, serviceRating, feedback FROM feedback LIMIT $limit OFFSET $offset";
+        $sql = "SELECT name, eventType, foodRating, serviceRating, feedback FROM feedbacks LIMIT $limit OFFSET $offset";
 
         $result = mysqli_query($conn, $sql);
 
