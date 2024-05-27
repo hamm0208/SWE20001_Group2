@@ -7,10 +7,12 @@ This is a website project built with mainly HTML, CSS, JavaScript, and PHP. This
 Before you begin, ensure you have met the following requirements:
 - You are using one of the following operating systems: Windows, macOS, or Linux.
 - You have installed the following software:
+  - **XAMPP**: If you have downloaded xampp you can skip the 3-4 because Apache and MySQL is already on XAMPP
   - **Apache**: A web server to serve your website.
   - **MySQL**: A relational database management system.
   - **PHP**: A server-side scripting language.
   - **Git**: A version control system to clone the repository.
+  - **GitHub Desktop**: Can clone the files from the repository.
   - **Visual Studio Code (VSC)**: A code editor for writing and managing your code.
 
 ## Installation
@@ -41,18 +43,8 @@ Before you begin, ensure you have met the following requirements:
         ```
     - On Windows, start MySQL from the XAMPP control panel.
 
-5. **Configure the database**:
-    - Create a new database:
-        ```sql
-        CREATE DATABASE your_database_name;
-        ```
-    - Import the database schema:
-        ```bash
-        mysql -u your_username -p your_database_name < path/to/your/database/schema.sql
-        ```
-
-6. **Update configuration files**:
-    - Update the database configuration in your project. For example, in `config.php`:
+5. **Update configuration files**:
+    - Update the database configuration in your project. For example, in `database.php`:
         ```php
         <?php
         define('DB_SERVER', 'localhost');
