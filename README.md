@@ -1,3 +1,9 @@
+# Online Food and Beverage Catering Management System (FCMS)
+
+## Description
+This is a website project built with mainly HTML, CSS, JavaScript, and PHP. This guide will help you set up and run the project on your local machine.
+GITHUB: https://github.com/hamm0208/SWE20001_Group2
+
 Preset Accounts:
 Email: thenbeckham@gmail.com           Password: 12345          User:Management
 Email: everlynchin09@gmail.com         Password: 12345          User:Management
@@ -7,12 +13,7 @@ Email: isakibul623@gmail.com           Password: 12345          User:Management
 Email: ThomasShelby@gmail.com          Password: 12345          User:Customer
 
 To view the operational portall:
-Sign in as any of the management acounts, go to the User Page, click the edit picture on the desired account, change the user type to operational
-
-# Online Food and Beverage Catering Management System (FCMS)
-
-## Description
-This is a website project built with mainly HTML, CSS, JavaScript, and PHP. This guide will help you set up and run the project on your local machine.
+Sign in as any of the management acounts, go to the User Page, click the edit picture on the desired account, change the user type to operational, log out of the acount and sign it to the acount that you changed
 
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
