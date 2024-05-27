@@ -1,3 +1,14 @@
+Preset Accounts:
+Email: thenbeckham@gmail.com           Password: 12345          User:Management
+Email: everlynchin09@gmail.com         Password: 12345          User:Management
+Email: anjanaalyann@gmail.com          Password: 12345          User:Management
+Email: crystalgoh01@gmail.com          Password: 12345          User:Management
+Email: isakibul623@gmail.com           Password: 12345          User:Management
+Email: ThomasShelby@gmail.com          Password: 12345          User:Customer
+
+To view the operational portall:
+Sign in as any of the management acounts, go to the User Page, click the edit picture on the desired account, change the user type to operational
+
 # Online Food and Beverage Catering Management System (FCMS)
 
 ## Description
