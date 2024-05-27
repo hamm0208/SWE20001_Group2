@@ -65,5 +65,13 @@ Before you begin, ensure you have met the following requirements:
 
 1. **Open your web browser**:
     - Navigate to `http://localhost/` to see your website.
-
+2. **To login to the webpage, you may use the following:**
+    - As Admin:
+      ```
+      email: crystalgoh01@gmail.com | password: 12345
+      ```
+    - As Customer:
+      ```
+      email: ThomasShelby@gmail.com | password: 12345
+      ```
 
